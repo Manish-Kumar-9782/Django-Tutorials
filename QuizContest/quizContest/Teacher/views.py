@@ -5,7 +5,16 @@ from django.http import HttpResponse
 
 
 def home(request):
-    return HttpResponse("<h1>This is home Page<h1>")
+
+    if request.method == "POST":
+
+        print("Posted data: ", request.POST.get('name'))
+
+    if request.method == "GET":
+
+        print("request name: ", request.GET.get('name'))
+
+    return render(request, "index.html", {"name": "Manish Kumar"})
 
 
 def login(request):
