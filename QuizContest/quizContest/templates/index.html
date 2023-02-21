@@ -10,13 +10,28 @@
 
 <body>
 
-    <h1>Hello this index page.</h1>
+    <h1>Student Registration Form</h1>
 
-    <h1>Hello, My Name is {{name}}</h1>
+    <!-- name, class, section, address, mobile No. -->
 
-    <form action="home" method="POST">
+    <form action="register" method="POST">
         {% csrf_token %}
-        <input type="text" name="name" value="">
+        <label for="st-name">Student Name: </label>
+        <input id="st-name" type="text" name="name" value=""> <br>
+
+        <label for="st-class">Student Class: </label>
+        <input id="st-class" name="class" type="text"> <br>
+
+        <label for="st-section">Student Section: </label>
+        <input id="st-section" name="section" type="text"> <br>
+
+        <label for="st-address">Student Address: </label>
+        <input id="st-address" name="address" type="text"> <br>
+
+        <label for="st-mobileNo">Student MobileNo: </label>
+        <input id="st-mobileNo" name="mobileNo" type="text"> <br>
+
+        <input type="submit">
     </form>
 
 </body>

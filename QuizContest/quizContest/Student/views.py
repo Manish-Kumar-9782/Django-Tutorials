@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
+from .models import Student
 
 # Create your views here.
 
 
-def home(request):
+def register(request):
 
     if request.method == "POST":
 
@@ -18,12 +19,17 @@ def home(request):
         print("Student mobileNo: ", request.POST['mobileNo'])
         print("\n------------------------------\n")
 
+        student = Student()
+
+        student.Name = request.POST['name']
+        student.Class = request.POST['class']
+        student.Section = request.POST['section']
+        student.Address = request.POST['address']
+        student.MobileNo = request.POST['mobileNo']
+        student.save()
+
     if request.method == "GET":
 
         print("request name: ", request.GET.get('name'))
 
-    return render(request, "index.html", {"name": "Manish Kumar"})
-
-
-def login(request):
-    return HttpResponse("<h1>This is login Page</h1>")
+    return render(request, "index.html")
