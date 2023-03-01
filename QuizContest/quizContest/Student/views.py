@@ -32,4 +32,4 @@ def register(request):
 
         print("request name: ", request.GET.get('name'))
 
-    return render(request, "index.html")
+    return render(request, "register-student.html")

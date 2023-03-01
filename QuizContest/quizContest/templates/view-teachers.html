@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Teachers</title>
+
+    <style>
+        table,
+        td,
+        th {
+            border-collapse: collapse;
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Subject</th>
+                <th>DOB</th>
+                <th>Address</th>
+                <th>Mobile Number</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for Teacher in Teachers%}
+            <tr>
+                <td>{{Teacher.Name}}</td>
+                <td>{{Teacher.Subject}}</td>
+                <td>{{Teacher.Dob}}</td>
+                <td>{{Teacher.Address}}</td>
+                <td>{{Teacher.MobileNo}}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+</body>
+
+</html>

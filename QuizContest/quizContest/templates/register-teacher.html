@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Registration</title>
+</head>
+
+<body>
+
+    <h1>Teacher Registration Form</h1>
+
+    <!-- name, class, section, address, mobile No. -->
+
+    <form action="register" method="POST">
+        {% csrf_token %}
+        <label for="t-name">Teacher Name: </label>
+        <input id="t-name" type="text" name="name" value=""> <br>
+
+        <label for="t-subject">Teacher Subject: </label>
+        <input id="t-subject" name="subject" type="text"> <br>
+
+        <label for="t-dob">Teacher DOB: </label>
+        <input id="t-dob" name="dob" type="date"> <br>
+
+        <label for="t-address">Teacher Address: </label>
+        <input id="t-address" name="address" type="text"> <br>
+
+        <label for="t-mobileNo">Teacher MobileNo: </label>
+        <input id="t-mobileNo" name="mobileNo" type="text"> <br>
+
+        <input type="submit">
+    </form>
+
+</body>
+
+</html>

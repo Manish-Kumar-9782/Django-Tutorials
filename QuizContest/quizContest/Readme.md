@@ -10,3 +10,10 @@ Project Name: `quizContest`
 6. add a two function for views named as `login` and `home`, and return some `HttpResponse` message.
 7. Now Connect these views with the `Teacher`'s views by using the urls.
 8. add two `path(url_address, view, view_name).`
+
+## Making Queries
+
+1. `Model.object.all()` : to get all object
+2. `Model.object.get(pk=id)` : to get single object associated with given id
+3. `Model.save()` : to save the changes
+4. `Model.object.values().all()` : first get the QuerySet in the dict format then get all object's values
