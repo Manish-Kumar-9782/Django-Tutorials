@@ -17,3 +17,18 @@ Project Name: `quizContest`
 2. `Model.object.get(pk=id)` : to get single object associated with given id
 3. `Model.save()` : to save the changes
 4. `Model.object.values().all()` : first get the QuerySet in the dict format then get all object's values
+
+### Creating an Admin account
+
+Register any model from app to `admin.py` using `admin.site.register(Model)`
+
+```bash
+(contest) G:\WorkData\Programming\Web Development\Django Tutorials\QuizContest\quizContest>python manage.py createsuperuser
+Username (leave blank to use 'manis'): joyti
+Email address: jyoti123@gmail.com
+Password:
+Password (again):
+The password is too similar to the username.
+Bypass password validation and create user anyway? [y/N]: y
+Superuser created successfully.
+```
