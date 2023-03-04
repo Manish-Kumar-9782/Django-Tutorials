@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Teacher</title>
+</head>
+
+<body>
+
+    <h1>Edit Teacher</h1>
+
+    <!-- name, class, section, address, mobile No. -->
+
+    <form action="{% url 'editTeacher' Teacher.id %}" method="POST">
+        {% csrf_token %}
+        <label for="t-name">Teacher Name: </label>
+        <input id="t-name" type="text" name="name" value="{{Teacher.Name}}"> <br>
+
+        <label for="t-subject">Teacher Subject: </label>
+        <input id="t-subject" name="subject" type="text" value="{{Teacher.Subject}}"> <br>
+
+        <label for="t-dob">Teacher DOB: </label>
+        <input id="t-dob" name="dob" type="date" value="{{ Teacher.Dob|date:'Y-m-d'}}"> <br>
+
+        <label for="t-address">Teacher Address: </label>
+        <input id="t-address" name="address" type="text" value="{{Teacher.Address}}"> <br>
+
+        <label for="t-mobileNo">Teacher MobileNo: </label>
+        <input id="t-mobileNo" name="mobileNo" type="text" value="{{Teacher.MobileNo}}"> <br>
+
+        <input type="submit" value="Edit">
+    </form>
+
+</body>
+
+</html>

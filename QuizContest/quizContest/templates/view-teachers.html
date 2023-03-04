@@ -34,6 +34,7 @@
                     <th>DOB</th>
                     <th>Address</th>
                     <th>Mobile Number</th>
+                    <th></th>
                 </tr>
             </thead>
 
@@ -46,6 +47,14 @@
                     <td>{{Teacher.Dob}}</td>
                     <td>{{Teacher.Address}}</td>
                     <td>{{Teacher.MobileNo}}</td>
+                    <td>
+                        <button type="button" class="btn btn-info text-light btn-sm">
+                            <a href="{% url 'editTeacher' Teacher.id %}"
+                                class="text-decoration-none">edit</a></button>
+                        <button type="button" class="btn btn-danger text-light btn-sm">
+
+                        </button>
+                    </td>
                 </tr>
                 {% endfor %}
 

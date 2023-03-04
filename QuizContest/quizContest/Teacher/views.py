@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Teacher
 
@@ -13,6 +13,34 @@ def viewTeachers(request):
     Teachers = Teacher.objects.all()
 
     return render(request, "view-teachers.html", {"Teachers": Teachers})
+
+
+def editTeacher(request, pk):
+
+    if request.method == 'GET':
+        print("found get request for teacher: ", pk)
+
+        # Now we need to fetch the data from data base.
+        teacher = Teacher.objects.get(pk=pk)
+        return render(request, "edit-teachers.html", {"Teacher": teacher})
+        # here we must need to return the request
+
+    elif request.method == 'POST':
+        print("found a teacher Editing request with data", request.POST)
+        teacher = Teacher.objects.get(pk=pk)
+
+        teacher.Name = request.POST.get("name", "-")
+        teacher.Dob = request.POST.get("dob", "-")
+        teacher.Subject = request.POST.get("subject", "-")
+        teacher.Address = request.POST.get("address", "-")
+        teacher.MobileNo = request.POST.get("mobileNo", "-")
+        teacher.save()
+        return redirect("view-teachers")
+
+    else:
+        pass
+
+    return redirect("view-teachers")
 
 
 def register(request):
