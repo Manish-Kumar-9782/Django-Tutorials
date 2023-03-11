@@ -50,10 +50,11 @@
                     <td>
                         <button type="button" class="btn btn-info text-light btn-sm">
                             <a href="{% url 'editTeacher' Teacher.id %}"
-                                class="text-decoration-none">edit</a></button>
+                                class="text-decoration-none text-light">edit</a></button>
                         <button type="button" class="btn btn-danger text-light btn-sm">
+                            <a href="{% url 'deleteTeacher' Teacher.id %}"
+                                class="text-decoration-none text-light">delete</a></button>
 
-                        </button>
                     </td>
                 </tr>
                 {% endfor %}

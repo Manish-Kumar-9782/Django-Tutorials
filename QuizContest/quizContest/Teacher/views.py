@@ -43,6 +43,24 @@ def editTeacher(request, pk):
     return redirect("view-teachers")
 
 
+def deleteTeacher(request, pk):
+
+    if request.method == "GET":
+        # now we will get the teacher with that pk value.
+        teacher = None
+        try:
+            teacher = Teacher.objects.get(pk=pk)
+            teacher.delete()
+            # Now if delete was successful, then we will redirect to the view teacher.
+        except Teacher.DoesNotExist:
+            # if our pk doesn't exist then we will return error Message
+            return HttpResponse(f"<h1>Teacher with id {pk} does not exist.</h1>")
+        except Exception:
+            return HttpResponse(f"<h1>Unable to delete the Teacher Associated with id {pk}</h1>")
+
+    return redirect("view-teachers")
+
+
 def register(request):
 
     if request.method == "POST":
@@ -59,7 +77,7 @@ def register(request):
 
         teacher = Teacher()
 
-        teacher.Name = request.POST['name']
+        teacher.Name = request.POST.get("name", "")
         teacher.Subject = request.POST['subject']
         teacher.Dob = request.POST['dob']
         teacher.Address = request.POST['address']
@@ -68,7 +86,6 @@ def register(request):
         teacher.save()
 
     if request.method == "GET":
-
         print("request name: ", request.GET.get('name'))
 
     return render(request, "register-teacher.html")
