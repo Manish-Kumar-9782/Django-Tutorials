@@ -19,7 +19,7 @@ from django.urls import path, include
 
 # this is the main urls entry point for each application.
 urlpatterns = [
-    path("", include("Teacher.urls")),
+    path("", include("Account.urls")),
     path("Student/", include("Student.urls")),
     path("Teacher/", include("Teacher.urls")),
     path('admin/', admin.site.urls),
