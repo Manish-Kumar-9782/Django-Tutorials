@@ -11,8 +11,24 @@ from Student.models import Student
 def home(request):
 
     if request.user.is_authenticated:
+        UserRelatedModel = None
+        if request.session.get("user-type"):
+            if request.session['user-type'] == 'teacher':
 
-        return HttpResponse("home section")
+                try:
+                    UserRelatedModel = Teacher.objects.get(
+                        UserAccount_id=request.user.id)
+                except Teacher.DoesNotExist:
+                    return HttpResponse(f"<h1>{request.user.username} is not teacher.</h1>")
+
+            elif request.session['user-type'] == 'student':
+                try:
+                    UserRelatedModel = Student.objects.get(
+                        UserAccount_id=request.user.id)
+                except Student.DoesNotExist:
+                    return HttpResponse(f"<h1>{request.user.username} is not student.</h1>")
+
+        return render(request, "Account/home.html", {"User": UserRelatedModel})
 
     return redirect("login")
 
@@ -25,7 +41,8 @@ def login(request):
 
     if request.method == "POST":
         # getting user information from login page.
-
+        user = None
+        request.session['user-type'] = None
         if request.POST.get("login-type") == "teacher":
 
             user = authenticate(request,
@@ -33,20 +50,26 @@ def login(request):
                                 password=request.POST.get("user_password")
                                 )
 
-            teacher = Teacher.objects.get(UserAccount_id=user.id)
-            request.session["Teacher"] = teacher
+            request.session["user-type"] = 'teacher'
 
-        if request.POST.get("login-type") == "student":
+        elif request.POST.get("login-type") == "student":
 
             user = authenticate(request,
                                 username=request.POST.get('user_name'),
                                 password=request.POST.get("user_password")
                                 )
 
-            student = Teacher.objects.get(UserAccount_id=user.id)
-            request.session["Student"] = student
+            request.session["user-type"] = 'student'
+
+        else:
+            user = authenticate(request,
+                                username=request.POST.get('user_name'),
+                                password=request.POST.get("user_password")
+                                )
 
         if user:
             # process the login
             auth.login(request, user)
             return redirect("home")
+        else:
+            return HttpResponse("<h1>User Name or Password is wrong.</h1>")
