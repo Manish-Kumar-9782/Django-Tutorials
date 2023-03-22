@@ -41,13 +41,25 @@
                         <label for="as-teacher">Login As Teacher</label>
                     </div>
                     <div class="d-flex align-items-center">
-                        <input type="radio" name="login-type" value="student">
+                        <input id="as-student" type="radio" name="login-type" value="student">
                         <label for="as-student">Login As Student</label>
                     </div>
                 </div>
 
                 <input type="submit" class="btn btn-success">
+
+                <ul>
+                    {% for message in messages %}
+                    {%with message.tags as tag %}
+                    {% if tag == "error"%}
+                    <li style="color:red;">{{message}}</li>
+                    {%endif%}
+                    {% endwith %}
+
+                    {% endfor %}
+                </ul>
             </form>
+
 
         </div>
     </div>
