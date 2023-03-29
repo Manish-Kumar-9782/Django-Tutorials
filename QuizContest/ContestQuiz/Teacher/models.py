@@ -11,7 +11,8 @@ class Teacher(models.Model):
     Dob = models.DateField(default=timezone.now)
     Address = models.CharField(max_length=50, default='')
     MobileNo = models.CharField(max_length=10, default='')
-    UserAccount = models.OneToOneField(User, on_delete=models.CASCADE)
+    UserAccount = models.OneToOneField(
+        User, on_delete=models.CASCADE, default=None, blank=True, null=True)
 
     def __str__(self):
         return f"{self.Name}"

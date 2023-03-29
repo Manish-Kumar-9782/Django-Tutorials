@@ -14,28 +14,19 @@ def home(request):
     if request.user.is_authenticated:
         UserRelatedModel = None
         print("user-type: ",  request.session.get("user-type"))
-        # if request.session.get("user-type"):
-        #     if request.session['user-type'] == 'teacher':
-        #         try:
-        #             UserRelatedModel = Teacher.objects.get(
-        #                 UserAccount_id=request.user.id)
-        #         except Teacher.DoesNotExist:
-        #             messages.error(
-        #                 request, f"{request.user.username} is not a teacher")
 
-        #             return render(request, "Account/login.html")
+        if request.session.get("user-type") == "teacher":
+            UserRelatedModel = Teacher.objects.get(
+                UserAccount_id=request.user.id)
+            return render(request, "Teacher/home.html", {"userModal": UserRelatedModel})
 
-        #     elif request.session['user-type'] == 'student':
-        #         try:
-        #             UserRelatedModel = Student.objects.get(
-        #                 UserAccount_id=request.user.id)
-        #         except Student.DoesNotExist:
-        #             messages.error(
-        #                 request, f"{request.user.username} is not a student")
+        elif request.session.get("user-type") == "student":
+            UserRelatedModel = Student.objects.get(
+                UserAccount_id=request.user.id)
+            return render(request, "Student/home.html", {"userModal": UserRelatedModel})
 
-        #             return render(request, "Account/login.html")
-
-        return render(request, "Account/home.html", {"User": UserRelatedModel})
+        else:
+            return render(request, "Account/home.html")
 
     return redirect("login")
 
@@ -66,8 +57,9 @@ def login(request):
             if request.session.get("user-type"):
                 if request.session['user-type'] == 'teacher':
                     try:
-                        UserRelatedModel = Teacher.objects.get(
+                        Teacher.objects.get(
                             UserAccount_id=user.id)
+
                     except Teacher.DoesNotExist:
                         messages.error(
                             request, f"{request.POST.get('user_name')} is not a teacher")
@@ -76,8 +68,9 @@ def login(request):
 
                 elif request.session['user-type'] == 'student':
                     try:
-                        UserRelatedModel = Student.objects.get(
+                        Student.objects.values().get(
                             UserAccount_id=user.id)
+
                     except Student.DoesNotExist:
                         messages.error(
                             request, f"{request.POST.get('user_name')} is not a student")
