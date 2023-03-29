@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My App Home</title>
+</head>
+
+<body>
+
+    <h1>Welcome To Home Page</h1>
+    <h3>Hello, My Name is {{name}}</h3>
+
+    <ul>
+        {% for student in Students %}
+        <li>{{student}}</li>
+        {% endfor %}
+    </ul>
+
+    <h5>Are you 18 year's old: </h5>
+
+    {% if age > 18 %}
+    <h6>Yes</h6>
+    {% else %}
+    <h6>No</h6>
+    {% endif %}
+
+
+    <table>
+        <tr>
+            <th style="text-align:left;">Name: </th>
+            <td>{{student.name}}</td>
+        </tr>
+        <tr>
+            <th style="text-align:left;">Age: </th>
+            <td>{{student.age}}</td>
+        </tr>
+        <tr>
+            <th style="text-align:left;">Height: </th>
+            <td>{{student.height}}</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
