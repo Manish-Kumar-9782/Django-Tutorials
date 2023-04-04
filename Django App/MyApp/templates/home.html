@@ -10,38 +10,7 @@
 
 <body>
 
-    <h1>Welcome To Home Page</h1>
-    <h3>Hello, My Name is {{name}}</h3>
-
-    <ul>
-        {% for student in Students %}
-        <li>{{student}}</li>
-        {% endfor %}
-    </ul>
-
-    <h5>Are you 18 year's old: </h5>
-
-    {% if age > 18 %}
-    <h6>Yes</h6>
-    {% else %}
-    <h6>No</h6>
-    {% endif %}
-
-
-    <table>
-        <tr>
-            <th style="text-align:left;">Name: </th>
-            <td>{{student.name}}</td>
-        </tr>
-        <tr>
-            <th style="text-align:left;">Age: </th>
-            <td>{{student.age}}</td>
-        </tr>
-        <tr>
-            <th style="text-align:left;">Height: </th>
-            <td>{{student.height}}</td>
-        </tr>
-    </table>
+    <a href="{% url 'addStudent' %}">Add Student</a>
 
 </body>
 
