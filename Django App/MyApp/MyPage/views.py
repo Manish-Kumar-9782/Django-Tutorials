@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import StudentForm
+from .models import Student
 # Create your views here.
 
 
 def home(request):
-    return render(request, "home.html")
+    # to get data from database use Student.objects.all();
+    students = Student.objects.all()
+    return render(request, "home.html", {"Students": students})
 
 
 def addStudent(request):

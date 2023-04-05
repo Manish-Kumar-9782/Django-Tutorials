@@ -6,11 +6,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My App Home</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+        crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-    <a href="{% url 'addStudent' %}">Add Student</a>
+    <div class="container row mt-4">
+        <aside class="col-2 border">
+            <a href="{% url 'addStudent' %}">Add Student</a>
+        </aside>
+        <div class="col border">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Std</th>
+                        <th>RollNO</th>
+                        <th>PhoneNo.</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Stream</th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    {% for student in Students %}
+                    <tr>
+                        <td>{{student.id}}</td>
+                        <td>{{student.Name}}</td>
+                        <td>{{student.Std}}</td>
+                        <td>{{student.RollNo}}</td>
+                        <td>{{student.PhoneNumber}}</td>
+                        <td>{{student.Email}}</td>
+                        <td>{{student.Address}}</td>
+                        <td>{{student.Stream}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 </body>
 
