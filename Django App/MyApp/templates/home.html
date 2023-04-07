@@ -20,8 +20,14 @@
 <body>
 
     <div class="container row mt-4">
-        <aside class="col-2 border">
-            <a href="{% url 'addStudent' %}">Add Student</a>
+        <aside class="col-2 border py-3">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="{% url 'addStudent' %}" class="text-decoration-none text-dark">Add
+                        Student</a>
+
+                </li>
+            </ul>
         </aside>
         <div class="col border">
             <table class="table">
@@ -35,6 +41,7 @@
                         <th>Email</th>
                         <th>Address</th>
                         <th>Stream</th>
+                        <td>Actions</td>
                     </tr>
                 </thead>
 
@@ -50,6 +57,15 @@
                         <td>{{student.Email}}</td>
                         <td>{{student.Address}}</td>
                         <td>{{student.Stream}}</td>
+                        <td>
+                            <div class="d-flex gap-1">
+                                <button type="button" class="btn btn-info">edit</button>
+                                <button type="button" class="btn btn-danger">
+                                    <a href="{% url 'removeStudent' student.id %}"
+                                        class="text-decoration-none text-light">delete</a>
+                                </button>
+                            </div>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>

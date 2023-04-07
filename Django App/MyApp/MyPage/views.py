@@ -14,13 +14,27 @@ def home(request):
 def addStudent(request):
 
     if request.method == "GET":
-        form = StudentForm()
+        form = StudentForm()  # blank student form
         return render(request, "addStudent.html", {"form": form})
 
     if request.method == "POST":
-        print(request.POST)
+        print(request.POST)  # filled student form with request.POST Data.
         form = StudentForm(request.POST)
         if form.is_valid():
             form.save()
 
         return redirect("home")
+
+
+def removeStudent(request, pk):
+
+    if request.method == "GET":
+        print("button pressed: ", pk)
+        st = Student.objects.get(pk=pk)
+        st.delete()
+        print("Student with id: ", pk, " Deleted")
+    return redirect("home")
+
+
+def updateStudent(request):
+    return redirect("home")
