@@ -57,10 +57,10 @@
                         <td>{{student.Email}}</td>
                         <td>{{student.Address}}</td>
                         <td>{{student.Stream}}</td>
-                        <td>
-                            <div class="d-flex gap-1">
-                                <button type="button" class="btn btn-info">edit</button>
-                                <button type="button" class="btn btn-danger">
+                        <td style="width:200px;">
+                            <div class="">
+                                <button type="button" class="btn btn-info btn-sm">edit</button>
+                                <button type="button" class="btn btn-danger btn-sm">
                                     <a href="{% url 'removeStudent' student.id %}"
                                         class="text-decoration-none text-light">delete</a>
                                 </button>
