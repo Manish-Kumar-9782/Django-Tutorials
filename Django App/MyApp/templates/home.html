@@ -1,78 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "index.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My App Home</title>
+{% block content %}
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-        crossorigin="anonymous">
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
-</head>
-
-<body>
-
-    <div class="container row mt-4">
-        <aside class="col-2 border py-3">
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <a href="{% url 'addStudent' %}" class="text-decoration-none text-dark">Add
-                        Student</a>
-
-                </li>
-            </ul>
-        </aside>
-        <div class="col border">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Std</th>
-                        <th>RollNO</th>
-                        <th>PhoneNo.</th>
-                        <th>Email</th>
-                        <th>Address</th>
-                        <th>Stream</th>
-                        <td>Actions</td>
-                    </tr>
-                </thead>
+<div class="container row mt-4">
+    <aside class="col-2 border py-3">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a href="{% url 'addStudent' %}" class="text-decoration-none text-dark">Add
+                    Student</a>
+            </li>
+            <li class="list-group-item">
+                <a href="{% url 'logout' %}">Logout</a>
+            </li>
+        </ul>
+    </aside>
+    <div class="col border">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Std</th>
+                    <th>RollNO</th>
+                    <th>PhoneNo.</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Stream</th>
+                    <td>Actions</td>
+                </tr>
+            </thead>
 
 
-                <tbody>
-                    {% for student in Students %}
-                    <tr>
-                        <td>{{student.id}}</td>
-                        <td>{{student.Name}}</td>
-                        <td>{{student.Std}}</td>
-                        <td>{{student.RollNo}}</td>
-                        <td>{{student.PhoneNumber}}</td>
-                        <td>{{student.Email}}</td>
-                        <td>{{student.Address}}</td>
-                        <td>{{student.Stream}}</td>
-                        <td style="width:200px;">
-                            <div class="">
-                                <button type="button" class="btn btn-info btn-sm">edit</button>
-                                <button type="button" class="btn btn-danger btn-sm">
-                                    <a href="{% url 'removeStudent' student.id %}"
-                                        class="text-decoration-none text-light">delete</a>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+            <tbody>
+                {% for student in Students %}
+                <tr>
+                    <td>{{student.id}}</td>
+                    <td>{{student.Name}}</td>
+                    <td>{{student.Std}}</td>
+                    <td>{{student.RollNo}}</td>
+                    <td>{{student.PhoneNumber}}</td>
+                    <td>{{student.Email}}</td>
+                    <td>{{student.Address}}</td>
+                    <td>{{student.Stream}}</td>
+                    <td style="width:200px;">
+                        <div class="">
+                            <button type="button" class="btn btn-info btn-sm">edit</button>
+                            <button type="button" class="btn btn-danger btn-sm">
+                                <a href="{% url 'removeStudent' student.id %}"
+                                    class="text-decoration-none text-light">delete</a>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
+</div>
 
-</body>
-
-</html>
+{% endblock %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.contrib import auth
+from django.contrib import auth, messages
 from .forms import StudentForm
 from .models import Student
 # Create your views here.
@@ -13,7 +13,7 @@ def home(request):
         students = Student.objects.all()
         return render(request, "home.html", {"Students": students})
 
-    return HttpResponse("<h1> login Required</h1>")
+    return redirect("login")
 
 
 def addStudent(request):
@@ -29,6 +29,12 @@ def addStudent(request):
             form.save()
 
         return redirect("home")
+
+
+def logout(request):
+    print("logging out...")
+    auth.logout(request)
+    return redirect("home")
 
 
 def removeStudent(request, pk):
@@ -63,6 +69,7 @@ def login(request):
             if user:
                 auth.login(request, user)
             else:
-                return HttpResponse("<h1>User is not authenticated</h1>")
+                messages.error(request, "Username or password is incorrect")
+                return redirect("login")
 
     return redirect("home")

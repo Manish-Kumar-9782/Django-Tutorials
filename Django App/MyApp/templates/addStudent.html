@@ -1,3 +1,7 @@
+{% extends "index.html" %}
+
+{% block content %}
+
 <form action="" method="POST">
     {% csrf_token %}
     <table style="text-align: left;">
@@ -5,3 +9,5 @@
     </table>
     <input type="submit">
 </form>
+
+{% endblock %}

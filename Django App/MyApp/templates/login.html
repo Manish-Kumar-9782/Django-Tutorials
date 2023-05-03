@@ -1,24 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "index.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
+{% block content %}
+<div class="container border vh-100 d-flex justify-content-center align-items-center">
+    <div class="card p-3 shadow">
+        <form action="#"
+              method="POST">
+            {% csrf_token %}
+            <div class="mb-2">
+                <label class="form-label"
+                       for="username">UserName: </label>
+                <input class="form-control"
+                       type="text"
+                       id="username"
+                       name="username"> <br>
+            </div>
 
-<body>
-    <form action="#" method="POST">
-        {% csrf_token %}
-        <label for="username">UserName: </label>
-        <input type="text" id="username" name="username"> <br>
+            <div class="mb-2">
+                <label class="form-label"
+                       for="password">Password: </label>
+                <input class="form-control"
+                       type="password"
+                       id="password"
+                       name="password"> <br>
+            </div>
 
-        <label for="password">Password: </label>
-        <input type="password" id="password" name="password"> <br>
-
-        <input type="submit" value="login">
-    </form>
-</body>
-
-</html>
+            <div class="d-grid">
+                <input type="submit"
+                       value="login"
+                       class="btn btn-success">
+            </div>
+            <div>
+                {% if messages %}
+                <ul class="messages list-group">
+                    {% for message in messages %}
+                    <li {% if message.tags %}
+                        class="{{ message.tags }} list-group-item"
+                        {% endif %}>{{ message }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
