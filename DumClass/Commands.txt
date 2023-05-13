@@ -1,0 +1,9 @@
+django-admin startproject <projectName>
+
+<projectName = DumbProject>
+
+django-admin startproject DumbProject
+
+// moving to DumbProject Project folder.
+// cd change directory
+cd DumbProject
