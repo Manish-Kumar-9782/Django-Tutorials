@@ -7,3 +7,6 @@ django-admin startproject DumbProject
 // moving to DumbProject Project folder.
 // cd change directory
 cd DumbProject
+
+-> Install PostgresSQL Connector
+	- pip install psycopg2

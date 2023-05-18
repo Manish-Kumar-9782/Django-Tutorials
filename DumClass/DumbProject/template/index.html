@@ -18,8 +18,8 @@
 </head>
 
 <body>
-    <h1>Hello World..!!</h1>
-    <h2>My List</h2>
+    <h1>First App Students</h1>
+    <h2>Student List</h2>
 
     <!-- using tags, django template language tags -> DTL Tags -->
     <ul>
@@ -31,18 +31,20 @@
     <table>
         <thead>
             <tr>
-                {% for item in header %}
-                <th>{{item}}</th>
-                {% endfor %}
+                <th>Name</th>
+                <th>Age</th>
+                <th>Height</th>
+                <th>BloodGroup</th>
             </tr>
         </thead>
 
         <tbody>
-            {% for row in rows %}
+            {% for record in items %}
             <tr>
-                {% for item in row %}
-                <td>{{item}}</td>
-                {% endfor %}
+                <td>{{record.name}}</td>
+                <td>{{record.age}}</td>
+                <td>{{record.height}}</td>
+                <td>{{record.bloodGroup}}</td>
             </tr>
             {% endfor %}
         </tbody>
