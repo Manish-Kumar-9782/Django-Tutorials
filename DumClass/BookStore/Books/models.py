@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 # Create your models here.
+# models is module in which we have multiple classes
+# models.Model is a class selected from models module. 
 
 class Book(models.Model):
     
