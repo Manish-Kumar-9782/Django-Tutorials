@@ -1,11 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Book
 # Create your views here.
 
 
 def home(request):
-    return render(request, 'index.html')
+
+    # ModalName.objects.all()
+    books = Book.objects.all()
+    context = {'books': books}
+    return render(request, 'index.html', context)
 
 
 def add_book(request):
@@ -38,4 +42,22 @@ def add_book(request):
 
         print("==============================================\n\n")
 
-        return render(request, 'index.html')
+        return redirect('home')
+
+
+def edit_book(request, book_id):
+
+    if request.method == 'GET':
+        book = Book.objects.get(id=book_id)
+        return render(request, 'editBook.html', {'book': book})
+
+    if request.method == 'POST':
+        book = Book.objects.get(id=book_id)
+
+        book.title = request.POST['book-title']
+        book.author = request.POST['book-author']
+        book.pages = request.POST['book-pages']
+        book.price = request.POST['book-price']
+
+        book.save()
+        return redirect("home")
