@@ -1,0 +1,28 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    
+    <link rel="stylesheet" href="{% static 'CSS/homepage.css' %}">
+  </head>
+  <body>
+    <div class="d-flex justify-content-between top-menu">
+        <div>
+            <h1>Tech Innovation</h1>
+          </div>
+      
+          <div>
+              <ul class="d-flex justify-content-around">
+                  <li><button><a href="#">Home</a></button></li>
+                  <li><button><a href="#">Course</a></button></li>
+                  <li><button><a href="{% url 'Student_Details' %}">Form Fill</a</button></li>
+                  <li><button><a href="#">Contact</a></button></li>
+              </ul>
+          </div>
+    </div>
+  </body>
+</html>

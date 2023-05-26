@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible"
+        content="IE=edge" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+  <title>Student Form</title>
+  <link rel="stylesheet"
+        href="{% static 'CSS/Student_Form.css' %}" />
+</head>
+
+<body>
+  <div class="container">
+    <form action=""
+          method="POST"> {% csrf_token %}
+      <div>
+        <label for="Student_name">Student Name</label><br />
+        <input type="text"
+               id="Student_name"
+               name="Student_name"
+               size="40" />
+      </div>
+
+      <div>
+        <label for="Student_fatherName">Student FatherName</label><br />
+        <input type="text"
+               id="Student_fatherName"
+               name="Student_fatherName"
+               size="40" />
+      </div>
+
+      <div>
+        <label for="Student_city">Student City</label><br />
+        <input type="text"
+               id="Student_city"
+               name="Student_city"
+               size="40" />
+      </div>
+      <div>
+        <label for="Student_class">Student Class</label><br />
+        <input type="number"
+               id="Student_class"
+               name="Student_class"
+               size="40" />
+      </div>
+      <div>
+        <label for="Student_mobileNumber">Student Number</label><br />
+        <input type="text"
+               id="Student_mobileNumber"
+               name="Student_mobileNumber"
+               size="40" />
+      </div>
+
+      <input type="submit" />
+    </form>
+  </div>
+</body>
+
+</html>

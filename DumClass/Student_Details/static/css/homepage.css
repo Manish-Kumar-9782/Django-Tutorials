@@ -1,0 +1,28 @@
+.d-flex{
+    display:flex;
+}
+.justify-content-between{
+    justify-content: space-between;
+}
+.justify-content-around{
+    justify-content: space-around;
+}
+li{
+    list-style-type: none;
+    margin-left:20px ;     
+}
+
+.top-menu{
+    border: 1px solid;
+    padding: 10px;
+    align-items:center;
+    background-color: #99627A;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+}
+button{
+    border-radius: 10px;
+    padding: 10px;
+}

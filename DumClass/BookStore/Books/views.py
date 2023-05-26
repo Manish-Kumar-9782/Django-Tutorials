@@ -1,15 +1,26 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Book
+from django.contrib import auth
 # Create your views here.
+
+
+def showMessage(string):
+    print("\n=========================================")
+    print(string)
+    print("=========================================\n")
 
 
 def home(request):
 
-    # ModalName.objects.all()
-    books = Book.objects.all()
-    context = {'books': books}
-    return render(request, 'index.html', context)
+    # is_authenticated
+    if request.user.is_authenticated:
+        # ModalName.objects.all()
+        books = Book.objects.all()
+        context = {'books': books}
+        return render(request, 'index.html', context)
+    else:
+        return redirect('login')
 
 
 def add_book(request):
@@ -61,3 +72,35 @@ def edit_book(request, book_id):
 
         book.save()
         return redirect("home")
+
+
+def delete_book(request, book_id):
+
+    if request.method == "GET":
+        showMessage("Deleting book with id: " + str(book_id))
+        book = Book.objects.get(id=book_id)
+        book.delete()
+    return redirect('home')
+
+
+def login(request):
+
+    if request.method == 'GET':
+        return render(request, 'login.html')
+
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = auth.authenticate(request, username=username, password=password)
+
+        if user:
+            auth.login(request, user)
+            return redirect('home')
+
+        return HttpResponse("<h1>Username or Password is wrong...</h1>")
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect('login')

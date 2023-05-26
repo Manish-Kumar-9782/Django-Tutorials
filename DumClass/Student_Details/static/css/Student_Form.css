@@ -1,0 +1,29 @@
+body{
+    background-color:#C88EA7;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+}
+label{
+    color: black;
+}
+.container-1{
+    border: 3px solid black;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: xx-large;
+    background-color: #99627A;
+}
+input{
+    padding: 10px;
+    border: none;
+    font-size:large;
+    border-radius: 10px;
+    margin:10px 0px ;
+}
