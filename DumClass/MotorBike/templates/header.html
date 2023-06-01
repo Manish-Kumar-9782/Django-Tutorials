@@ -1,0 +1,23 @@
+{% load static %}
+
+{% block header %}
+
+<header class="absolute-header header-text d-flex justify-content-between align-items-center px-3">
+    <div class="d-flex gap-1 align-items-center">
+        <img class="logo-img"
+             src="{% static 'img/logo.webp' %}"
+             alt="my Logo">
+        <h3 class="">MotorBike</h3>
+    </div>
+    <div>
+        <ul type="none"
+            class="fs-3 d-flex p-0 gap-3">
+            <li>GALLERY</li>
+            <li>HOME</li>
+            <li>ABOUT</li>
+            <li>CONTACT</li>
+        </ul>
+    </div>
+</header>
+
+{% endblock header %}
