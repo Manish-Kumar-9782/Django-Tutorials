@@ -30,7 +30,7 @@ class Parts(models.Model):
     name = models.CharField(max_length=30)
     price = models.IntegerField()
     company = models.CharField(max_length=20)
-
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
     created_on = models.DateTimeField(auto_now_add=timezone.now)
     updated_on = models.DateTimeField(auto_now=timezone.now)
     registeredBy = models.ForeignKey(
@@ -38,11 +38,12 @@ class Parts(models.Model):
     lastUpdatedBy = models.ForeignKey(
         User, on_delete=models.DO_NOTHING, related_name="part_lastUpdatedBy")
 
-    def insertDetails(self, name, price, company, user, initial=False):
+    def insertDetails(self, name, price, company, image, user, initial=False):
 
         self.name = name
         self.price = price
         self.company = company
+        self.image = image
         if initial:
             self.registeredBy = user
         self.lastUpdatedBy = user

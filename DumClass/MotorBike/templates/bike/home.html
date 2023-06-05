@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="wallpaper">
-    <div class="h-100 w-100 border text-mid-center blur-bg">
+    <div class="h-100 w-100 text-mid-center blur-bg">
         <h1 class="fs-1">WelCome To MotorBike</h1>
     </div>
 </div>
@@ -18,7 +18,7 @@
         <div id="services"
              class="mb-5 d-flex gap-4">
             {% for service in services %}
-            <div class="card w-25 p-3">
+            <div class="card w-25 p-3 service-background">
                 <h1>{{service.title}}</h1>
                 <p>{{service.description}}</p>
             </div>
@@ -39,7 +39,14 @@
         <div id="parts"
              class="mb-5 d-flex gap-4">
             {% for part in parts %}
-            <div class="card w-25 p-3">
+            <div class="card w-25 p-3 service-background">
+                {% if part.image %}
+                <div class="card-img-container">
+                    <img src="{{part.image.url}}"
+                         class="card-img"
+                         alt="part image">
+                </div>
+                {% endif %}
                 <h1>{{part.name}}</h1>
                 <p>Price: {{part.price}}</p>
                 <p>Company: {{part.company}}</p>

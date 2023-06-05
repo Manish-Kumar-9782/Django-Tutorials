@@ -33,8 +33,9 @@ def add_parts(request):
         name = request.POST.get("name")
         price = request.POST.get("price")
         company = request.POST.get("company")
+        image = request.FILES.get("image")
 
         part = Parts()
 
-        part.insertDetails(name, price, company, request.user, True)
+        part.insertDetails(name, price, company, image, request.user, True)
         return redirect('bike')
