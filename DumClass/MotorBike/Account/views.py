@@ -24,3 +24,10 @@ def login(request):
             return redirect('bike')
 
     return HttpResponse("<h1> Bad Request </h1>")
+
+
+def logout(request):
+    if request.user.is_authenticated:
+        auth.logout(request)
+
+    return redirect('login')

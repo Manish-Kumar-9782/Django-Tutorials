@@ -70,3 +70,13 @@ body {
     background-position: center;
     background-size: cover;
 }
+
+.card-actions {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 100;
+}
+
+.card-actions:hover {
+    opacity: 1;
+}

@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="vh-100 d-flex flex-column justify-content-center align-items-center blur-bg">
+    <h1 style="font-size: 5rem">
+        <i class="bi bi-x-octagon-fill text-danger"></i>
+    </h1>
+    <h1 class="text-light">Access Denied</h1>
+    <h3>You don't have enough permission to {{perm}} this content!!!!</h3>
+</div>
+{% endblock content %}

@@ -1,0 +1,62 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="vh-100 d-flex justify-content-center align-items-center ">
+
+    <form action=""
+          class="w-50 p-4 bg-secondary rounded blur-bg"
+          style="--bs-bg-opacity: 0.2"
+          method="POST"
+          enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1 class="text-center mb-3 text-light">Add a New Part</h1>
+        <div class="mb-4">
+            <label for="name"
+                   class="form-label">Part Name</label>
+            <input type="text"
+                   class="form-control"
+                   id="name"
+                   name="name"
+                   value="{{part.name}}">
+        </div>
+
+        <div class="mb-4">
+            <label for="price"
+                   class="form-label">Part Price</label>
+            <input type="text"
+                   class="form-control"
+                   id="price"
+                   name="price"
+                   value="{{part.price}}">
+        </div>
+
+        <div class="mb-4">
+            <label for="company"
+                   class="form-label">Company Name</label>
+            <input type="text"
+                   class="form-control"
+                   id="company"
+                   name="company"
+                   value="{{part.company}}">
+        </div>
+
+        <div class="mb-4">
+
+            {% if part.image %}
+            <img src="{{part.image.url}}"
+                 alt="part image"
+                 height="60px">
+            {% endif %}
+
+            <input type="file"
+                   class="btn btn-secondary"
+                   id="image"
+                   name="image">
+
+        </div>
+
+        <input type="submit"
+               class="btn btn-success">
+    </form>
+</div>
+{% endblock content %}

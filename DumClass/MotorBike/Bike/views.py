@@ -8,8 +8,18 @@ def home(request):
     services = Service.objects.all()
     parts = Parts.objects.all()
     if request.user.is_authenticated:
-        return render(request, 'bike/home.html',
-                      {"services": services,
-                       "parts": parts})
+        permissions = {
+            'has_permission_add': request.user.has_perm("services.add_parts"),
+            'has_permission_change': request.user.has_perm("services.change_parts"),
+            'has_permission_delete': request.user.has_perm("services.delete_parts"),
+            'has_permission_view': request.user.has_perm("services.view_parts"),
+        }
+
+        context = {"services": services,
+                   "parts": parts}
+
+        context.update(permissions)
+
+        return render(request, 'bike/home.html', context)
 
     return redirect('login')

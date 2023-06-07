@@ -36,10 +36,32 @@
         </a></button>
 
     <div class="container">
+
+        {% if has_permission_view %}
         <div id="parts"
-             class="mb-5 d-flex gap-4">
+             class="mb-5 d-flex gap-4 flex-wrap">
             {% for part in parts %}
+
             <div class="card w-25 p-3 service-background">
+                <div class="absolute-top-right card-actions">
+                    {% if has_permission_change %}
+                    <button type="button"
+                            class="btn btn-dark">
+                        <a href="{% url 'edit_part' part.id %}">
+                            <i class="bi bi-pencil-fill text-light"></i>
+                        </a>
+                    </button>
+                    {% endif %}
+
+                    {% if has_permission_delete %}
+                    <button type="button"
+                            class="btn btn-dark"><a href="{% url 'delete_part' part.id %}">
+                            <i class="bi bi-trash3-fill text-light"></i>
+                        </a>
+                    </button>
+                    {% endif %}
+
+                </div>
                 {% if part.image %}
                 <div class="card-img-container">
                     <img src="{{part.image.url}}"
@@ -53,6 +75,7 @@
             </div>
             {% endfor %}
         </div>
+        {% endif %}
     </div>
 </section>
 {% endblock  %}

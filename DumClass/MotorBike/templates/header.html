@@ -11,11 +11,19 @@
     </div>
     <div>
         <ul type="none"
-            class="fs-3 d-flex p-0 gap-3">
+            class="fs-3 d-flex p-0 gap-4 px-4">
             <li>GALLERY</li>
             <li>HOME</li>
             <li>ABOUT</li>
             <li>CONTACT</li>
+            <li>
+                <span class="text-light bg-dark p-1 rounded">{{request.user.username}}</span>
+                <button type="button"
+                        class="btn btn-danger">
+                    <a class="text-decoration-none text-light"
+                       href="{% url 'logout' %}">Logout</a>
+                </button>
+            </li>
         </ul>
     </div>
 </header>
