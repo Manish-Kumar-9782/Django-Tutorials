@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Myweb Page</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+
+</head>
+
+<body class="vh-100">
+
+    <div class="d-flex justify-content-end border p-4">
+        {% if request.user.is_authenticated %}
+        <span class="px-2">{{request.user.username}}</span>
+        <button type="btn"
+                class="btn btn-secondary">
+            <a class="text-decoration-none text-light"
+               href="{% url 'logout' %}">logout</a>
+        </button>
+        {% endif %}
+    </div>
+
+    <div class="d-flex flex-column justify-content-center align-items-center h-100">
+        <h1>Welcome to MyWeb Page</h1> <br>
+        <button type="btn"
+                class="btn btn-primary">
+            <a class="text-decoration-none text-light"
+               href="{% url 'addEntry' %}">Add Entry</a>
+        </button>
+        <br>
+        <!-- login button -->
+        <button type="btn"
+                class="btn btn-primary">
+            <a class="text-decoration-none text-light"
+               href="{% url 'login' %}">login</a>
+        </button>
+
+        <br>
+        <!-- registration button -->
+        <button type="btn"
+                class="btn btn-primary">
+            <a class="text-decoration-none text-light"
+               href="{% url 'register' %}">Register Account</a>
+        </button>
+
+        <!-- todo app -->
+        <br><br>
+        <button type="btn"
+                class="btn btn-primary">
+            <a class="text-decoration-none text-light"
+               href="{% url 'todu_home' %}">Todo App</a>
+        </button>
+    </div>
+</body>
+
+</html>
