@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Todo
+from .utility import getPermission
 # Create your views here.
 
 
@@ -15,22 +16,27 @@ def home(request):
 
     if request.user.is_authenticated:
         # accessing only those todo items whose are belongs to the current user.
+        permission = getPermission(request.user, "todu", "todo")
+
         todos = Todo.objects.filter(user_id=request.user.id)
-        return render(request, "todo_home.html", {"todo_items": todos})
+
+        return render(request, "todo_home.html", {"todo_items": todos, "permission": permission})
     else:
         return redirect("login")
 
 
 def add_todo(request):
 
-    if request.method == "POST":
+    if request.method == "POST" and request.user.is_authenticated:
 
-        content = request.POST.get("content")
-        todo = Todo()
-        todo.content = content
+        permission = getPermission(request.user, "todu", "todo")
+        if permission.add:
+            content = request.POST.get("content")
+            todo = Todo()
+            todo.content = content
 
-        todo.user = request.user
-        todo.save()
+            todo.user = request.user
+            todo.save()
 
     return redirect('todu_home')
 
