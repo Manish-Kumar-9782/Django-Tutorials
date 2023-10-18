@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+  <title>main page</title>
+  <link rel="stylesheet"
+        href="{% static 'css/index.css'%}">
+
+  <link rel="stylesheet"
+        href="{% static 'css/style2.css'%}">
+
+</head>
+
+<body>
+
+  {% include "header.html" %}
+
+  <div>
+    <span>{{request.user.username}}</span>
+    <button><a href="{% url 'logout'%}">LOG_OUT</a></button><br>
+  </div><br><br>
+  <h1>My new project python 'django'</h1><br>
+
+  <div class="all_button">
+    <button><a href="{% url 'loginin' %}">LOGIN</a></button>
+    <button><a href="{% url 'registration' %}">REGISTRATION</a></button>
+    <button><a href="{% url 'school_manage' %}">SCHOOL MANAGEMENT</a></button>
+  </div>
+</body>
+
+</html>

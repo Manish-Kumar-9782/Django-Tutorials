@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add_student</title>
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            
+            flex-direction: column;
+            
+        }
+
+        .stu_data{
+            padding: 10px;
+            background-color: blueviolet;
+            width: 400px;
+        }
+        .student_row{
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            background-color: aquamarine;
+            padding: 5px;
+            margin-top: 5px;
+            border-radius: 5px;
+        }
+
+        .student_row label{
+            font-size: larger;
+
+        }
+
+        .student_row input{
+            font-size: larger;
+            
+            color: black;
+            padding: 5px;
+            background-color: aquamarine;
+            
+        }
+        button{
+            font-size: larger;
+            color: black;
+            padding: 5px;
+            background-color: aquamarine;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+        
+        button:hover{
+            background-color: blue;
+            cursor: pointer;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>NER STUDENT MEMBER ADD MY LIST</h1>
+    <div class="stu_data">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="student_row">
+                <label for="student_row_no"><b>Student_Row.No:</b></label>
+                <input type="text" name="student_row_no" required>
+            </div>
+            <div class="student_row">
+                <label for="student_name"><b>Student_Name:</b></label>
+                <input type="text" name="student_name" required>
+            </div>
+            <div class="student_row">
+                <label for="student_age"><b>Student_Age:</b></label>
+                <input type="text" name="student_age" max="25" min="1" required>
+            </div>
+            <div class="student_row">
+                <label for="student_class"><b>Student_Class:</b></label>
+                <input type="text" name="student_class" min="1" max="12" required>
+            </div>
+            <button type="submit" name="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>School Management System</title>
+    <link rel="stylesheet"
+          href="{% static 'css/student.css'%}">
+</head>
+
+<body>
+    {% csrf_token %}
+
+    {% include "header.html" %}
+
+    <div class="container">
+        <div id="headlast">
+            <h2>Students</h2>
+            <button><a href="{% url 'add_student'%}">add_students</a> </button>
+        </div>
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Class</th>
+
+            </tr>
+            {% for item in items %}
+
+            <tr>
+                <td>{{item.row_number}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.age}}</td>
+                <td>{{item.grade}}</td>
+                <td><button><a href="{% url 'delete' item.id %}">Delete</a></button>
+                    <button> <a href="#">Update</a></button>
+                </td>
+
+            </tr>
+
+
+            {% endfor %}
+            <!-- Add more rows for other students -->
+        </table>
+    </div>
+    <footer>
+        &copy; 2023 School Management System
+    </footer>
+</body>
+
+</html>

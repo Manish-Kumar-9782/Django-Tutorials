@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>School Management System</title>
+    <link rel="stylesheet"
+          href="{% static 'css/teacher.css' %}">
+</head>
+
+<body>
+    {% csrf_token %}
+    {% include "header.html" %}
+
+    <div class="container">
+        <div id="headlast">
+            <h2>Students</h2>
+            <button><a href="#">ADD_TEACHERS</a> </button>
+        </div>
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Subject</th>
+                <th>Tech_Class</th>
+
+            </tr>
+            {% for item in items %}
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button><a href="">Delete</a></button>
+                    <button> <a href="#">Update</a></button>
+                </td>
+
+            </tr>
+
+
+            {% endfor %}
+            <!-- Add more rows for other students -->
+        </table>
+    </div>
+    <footer>
+        &copy; 2023 School Management System
+    </footer>
+</body>
+
+</html>
