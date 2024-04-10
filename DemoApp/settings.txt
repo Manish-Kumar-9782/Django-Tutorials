@@ -1,0 +1,17 @@
+Setup the templates
+1. in settings.py file find the TEMPLATES list.
+2. inside that find the DIRS property
+3. add a directory entry like BASE_DIR/'templates'
+4. Now create a folder in the base directory named by	'tempaltes'
+5. create a 'index.html' file and write some content
+6. inside the view.py file import render function
+	-> from django.shortcuts import render
+7. use render function to send the html file as response.
+
+
+Setting up the newapp
+
+1. after creating a new app by command `python manage.py startapp <app_name>`
+2. create a new `urls.py` file and write the default code snippet.
+3. include this <app_name>/urls.py urlspattern to the main app `urls.py` file's urlspattern list.
+4. Register your application in `INSTALLED_APP` list from settings.py file.
