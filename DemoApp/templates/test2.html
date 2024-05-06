@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+
+
+{% block content %}
+
+<div class="py-5">
+
+    <form action="">
+        <label for="number">Enter a Number</label>
+        <input type="number"
+               name="number"
+               id="number">
+
+        <input type="submit">
+    </form>
+
+
+    <div class="py-5">
+        <h1>Your number {{number}} is
+
+            {% if isPrime %}
+            <span class="text-primary">is a Prime Number.</span>
+            {% else %}
+            <span class="text-primary">is not a Prime number</span>
+            {% endif %}
+
+        </h1>
+    </div>
+
+</div>
+
+{% endblock content %}

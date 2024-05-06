@@ -19,7 +19,8 @@ from django.urls import path, include
 from .views import home
 
 urlpatterns = [
+    path("", view=home, name="home"),
     path('admin/', admin.site.urls),
-    path("home/", view=home, name="home"),
-    path("miniapp/", include("miniapp.urls"))
+    path("miniapp/", include("miniapp.urls")),
+    path("login/", include("Login.urls"))
 ]

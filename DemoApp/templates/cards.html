@@ -1,0 +1,41 @@
+{% load static %}
+
+<div class="d-flex gap-2 justify-content-around py-5">
+
+    {% for Person  in  Persons %}
+
+
+    <div class="card-container">
+        <div class="d-flex a-center flex-col">
+            <div class="avtar">
+                <img src="{% static 'images/OIP.jpeg' %}"
+                     alt="photo">
+            </div>
+            <div style="padding-top: 20px;font-size: larger;">{{Person.Name}}</div>
+            <div style="padding-bottom: 20px;">{{Person.Location}}</div>
+
+        </div>
+        <div class="d-flex flex-col a-center">
+            <div style="gap: 10px;padding: 10px;"
+                 class="t-center">{{Person.Description}}</div>
+            <div style="gap: 10px;"
+                 class="d-flex"> <button class="button">message</button>
+                <button class="button">following</button>
+            </div>
+        </div>
+        <div>
+            <div>skills</div>
+            <div style="flex-wrap: wrap;gap: 8px 5px
+            ;"
+                 class="d-flex j-center">
+                {% for skill in Person.Skills %}
+                <span>{{skill}}</span>
+                {% endfor %}
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+</div>
