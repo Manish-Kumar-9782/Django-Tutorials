@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate
 
 def login(request):
 
+    print(dir(request.user))
     if request.method == 'GET':
         return render(request, "Login.html")
 
@@ -23,3 +24,8 @@ def login(request):
             return redirect("home")
 
         return HttpResponse("No Account found for username: " + username)
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect("home")

@@ -22,5 +22,6 @@ urlpatterns = [
     path("", view=home, name="home"),
     path('admin/', admin.site.urls),
     path("miniapp/", include("miniapp.urls")),
-    path("login/", include("Login.urls"))
+    path("login/", include("Login.urls")),
+    path("employee/", include("Employee.urls")),
 ]

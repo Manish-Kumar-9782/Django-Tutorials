@@ -1,0 +1,5 @@
+1. Creation and Use of Models
+2. Migration of the Models
+3. Perform CURD Operation on Models
+4. Relationship in b/w the Models
+6. Permission of the Models

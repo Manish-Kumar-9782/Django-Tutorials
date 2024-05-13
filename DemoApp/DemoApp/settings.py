@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "miniapp.apps.MiniappConfig",
     "Login.apps.LoginConfig",
+    "Employee.apps.EmployeeConfig",
 ]
 
 MIDDLEWARE = [
