@@ -7,7 +7,7 @@
     <div class="w-50 bg-light p-5">
 
 
-        <form accept=""
+        <form action=""
               method="POST">
 
             {% csrf_token %}
@@ -18,7 +18,10 @@
                        class="form-control"
                        id="first_name"
                        placeholder="First Name"
-                       name="first_name">
+                       name="first_name"
+                       {% if update %}
+                       value="{{Emp.first_name}}"
+                       {% endif %}>
             </div>
 
             <div class="form-group">
@@ -27,7 +30,10 @@
                        class="form-control"
                        id="last_name"
                        name="last_name"
-                       placeholder="Last Name">
+                       placeholder="Last Name"
+                       {% if update %}
+                       value="{{Emp.last_name}}"
+                       {% endif %}>
             </div>
 
 
@@ -37,7 +43,10 @@
                        class="form-control"
                        id="phone_number"
                        name="phone_number"
-                       placeholder="Phone Number">
+                       placeholder="Phone Number"
+                       {% if update %}
+                       value="{{Emp.phone_number}}"
+                       {% endif %}>
             </div>
 
 
@@ -48,7 +57,10 @@
                        class="form-control"
                        id="email"
                        placeholder="Enter email"
-                       name="email">
+                       name="email"
+                       {% if update %}
+                       value="{{Emp.email}}"
+                       {% endif %}>
             </div>
 
             <button type="submit"
