@@ -3,3 +3,5 @@
 3. Perform CURD Operation on Models
 4. Relationship in b/w the Models
 6. Permission of the Models
+7. Login Re-routing for Authentication
+8. Registration of User Account 

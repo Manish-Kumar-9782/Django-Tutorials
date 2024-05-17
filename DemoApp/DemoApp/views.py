@@ -1,5 +1,5 @@
 from django.http.response import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import auth
 
 
@@ -10,5 +10,7 @@ from django.contrib import auth
 def home(request):
 
     # first get the data from post
+    if request.user.is_authenticated:
+        return render(request, "index.html")
 
-    return render(request, "index.html")
+    return redirect("login")
