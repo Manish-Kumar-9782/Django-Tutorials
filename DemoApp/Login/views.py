@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import auth
 from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
 # Create your views here.
 
 
@@ -29,3 +30,29 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect("home")
+
+
+def register(request):
+
+    if request.method == "GET":
+        return render(request, "register.html")
+
+    if request.method == "POST":
+
+        username = request.POST.get("username")
+        firstname = request.POST.get("firstname")
+        lastname = request.POST.get("lastname")
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+        c_password = request.POST.get("c_password")
+
+        if password != c_password:
+            return HttpResponse("Password does not match")
+
+        user = User.objects.create_user(
+            username, email, password,
+            first_name=firstname, last_name=lastname)
+
+        user.save()
+
+        return redirect("login")
