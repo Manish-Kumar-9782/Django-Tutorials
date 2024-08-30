@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap"
+          rel="stylesheet">
+
+    <style>
+        body {
+            font-family: "SUSE", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .logo {
+            width: 40px;
+            height: 50px;
+        }
+
+        .grid {
+            width: 300px;
+            height: 300px;
+        }
+
+        .title {
+            font-size: 40px;
+        }
+
+        header {
+            background-color: #e2e8e4;
+            color: #006c84;
+            padding: 10px 5px;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .jc-between {
+            justify-content: space-between;
+        }
+
+        .al-center {
+            align-items: center;
+        }
+
+        .gap-1 {
+            gap: 15px;
+        }
+
+        .nav-list .nav-item {
+            display: inline;
+            margin-inline: 20px;
+
+        }
+
+        .fs-1 {
+            font-size: 5rem;
+        }
+
+        .fs-4 {
+            font-size: 1.3rem;
+        }
+
+        .section-a {
+            color: #e2e8e4;
+            background-color: #006c84;
+            padding: 30px;
+        }
+
+        .m-0 {
+            margin: 0;
+        }
+
+        .p-3 {
+            padding: 30px;
+        }
+
+        .section-b {
+            margin-top: 40px;
+        }
+
+        .box {
+            border: 1px solid gray;
+            width: 250px;
+            box-shadow: 2px 2px 10px gray;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .box-footer {}
+    </style>
+    <title>Home Page</title>
+</head>
+
+<body>
+
+    <header class="d-flex jc-between">
+        <div class="d-flex al-center gap-1">
+            <svg class="logo"
+                 viewBox="0 0 24 24"
+                 class="h-5"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 fill="none"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+                <rect x="3"
+                      y="3"
+                      width="7"
+                      height="7" />
+                <rect x="14"
+                      y="3"
+                      width="7"
+                      height="7" />
+                <rect x="14"
+                      y="14"
+                      width="7"
+                      height="7" />
+                <rect x="3"
+                      y="14"
+                      width="7"
+                      height="7" />
+            </svg>
+            <span class="title">Black Box</span>
+        </div>
+        <div>
+
+            <ul class="nav-list">
+                <li class="nav-item">Google</li>
+                <li class="nav-item">About</li>
+                <li class="nav-item">Contact</li>
+                <li class="nav-item">User</li>
+            </ul>
+
+        </div>
+    </header>
+
+    <div class="section-a d-flex al-center jc-between gap-1">
+        <div>
+            <h1 class="fs-1 m-0">The Black Box</h1>
+            <p class="fs-4">In science, computing, and engineering, a black box is a system which
+                can be
+                viewed in
+                terms of its inputs and outputs (or transfer characteristics), without any knowledge
+                of
+                its internal workings. Its implementation is "opaque" (black). The term can be used
+                to
+                refer to many inner workings, such as those of a transistor, an engine, an
+                algorithm,
+                the human brain, or an institution or government.</p>
+        </div>
+
+        <div>
+            <svg class="grid"
+                 viewBox="0 0 24 24"
+                 class="h-5"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 fill="none"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+                <rect x="3"
+                      y="3"
+                      width="7"
+                      height="7" />
+                <rect x="14"
+                      y="3"
+                      width="7"
+                      height="7" />
+                <rect x="14"
+                      y="14"
+                      width="7"
+                      height="7" />
+                <rect x="3"
+                      y="14"
+                      width="7"
+                      height="7" />
+            </svg>
+        </div>
+    </div>
+
+    <div class="section-b al-center d-flex jc-between">
+
+        <div class="box">
+            <span>logo</span>
+            <h3>Title</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro officiis culpa, ut
+                neque quasi commodi temporibus voluptas quaerat, distinctio blanditiis ipsum ex
+                laboriosam fuga molestias qui voluptate corporis sit fugit.</p>
+        </div>
+
+        <div class="box">
+            <span>logo</span>
+            <h3>Title</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro officiis culpa, ut
+                neque quasi commodi temporibus voluptas quaerat, distinctio blanditiis ipsum ex
+                laboriosam fuga molestias qui voluptate corporis sit fugit.</p>
+        </div>
+
+        <div class="box">
+            <span>logo</span>
+            <h3>Title</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro officiis culpa, ut
+                neque quasi commodi temporibus voluptas quaerat, distinctio blanditiis ipsum ex
+                laboriosam fuga molestias qui voluptate corporis sit fugit.</p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -5,6 +5,11 @@ from .data import myContent
 
 def home_page(request):
 
+    return render(request, "index.html")
+
+
+def records_page(request):
+
     groups = {
         "20_to_30": 0,
         "30_to_40": 0,
