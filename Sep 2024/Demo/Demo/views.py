@@ -4,8 +4,11 @@ from .data import myContent
 
 
 def home_page(request):
-
     return render(request, "index.html")
+
+
+def about_page(request):
+    return render(request, "About.html")
 
 
 def records_page(request):

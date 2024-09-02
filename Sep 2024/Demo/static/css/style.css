@@ -1,0 +1,84 @@
+body {
+    font-family: "SUSE", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.logo {
+    width: 40px;
+    height: 50px;
+}
+
+.grid {
+    width: 300px;
+    height: 300px;
+}
+
+.title {
+    font-size: 40px;
+}
+
+header {
+    background-color: #e2e8e4;
+    color: #006c84;
+    padding: 10px 5px;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.jc-between {
+    justify-content: space-between;
+}
+
+.al-center {
+    align-items: center;
+}
+
+.gap-1 {
+    gap: 15px;
+}
+
+.nav-list .nav-item {
+    display: inline;
+    margin-inline: 20px;
+
+}
+
+.fs-1 {
+    font-size: 5rem;
+}
+
+.fs-4 {
+    font-size: 1.3rem;
+}
+
+.section-a {
+    color: #e2e8e4;
+    background-color: #006c84;
+    padding: 30px;
+}
+
+.m-0 {
+    margin: 0;
+}
+
+.p-3 {
+    padding: 30px;
+}
+
+.section-b {
+    margin-top: 40px;
+}
+
+.box {
+    border: 1px solid gray;
+    width: 250px;
+    box-shadow: 2px 2px 10px gray;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.box-footer {}
