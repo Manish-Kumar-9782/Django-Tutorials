@@ -4,7 +4,7 @@ from .data import myContent
 
 
 def home_page(request):
-    return render(request, "index.html")
+    return render(request, "home_page.html")
 
 
 def about_page(request):

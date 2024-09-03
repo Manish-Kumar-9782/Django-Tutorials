@@ -18,6 +18,8 @@
 
     <link rel="stylesheet"
           href="{% static 'css/style.css' %}">
+
+
     <title>Home Page</title>
 </head>
 
@@ -59,7 +61,7 @@
                     <img src="{% static 'images/google-logo.png'%}"
                          alt="google logo"
                          width="40px">
-                    Google
+                    <a href="https://www.google.com/">Google</a>
                 </li>
                 <li class="nav-item">
                     <a href="{% url 'about' %}">About Us</a>
@@ -71,78 +73,7 @@
         </div>
     </header>
 
-    <div class="section-a d-flex al-center jc-between gap-1">
-        <div>
-            <h1 class="fs-1 m-0">The Black Box</h1>
-            <p class="fs-4">In science, computing, and engineering, a black box is a system which
-                can be
-                viewed in
-                terms of its inputs and outputs (or transfer characteristics), without any knowledge
-                of
-                its internal workings. Its implementation is "opaque" (black). The term can be used
-                to
-                refer to many inner workings, such as those of a transistor, an engine, an
-                algorithm,
-                the human brain, or an institution or government.</p>
-        </div>
-
-        <div>
-            <svg class="grid"
-                 viewBox="0 0 24 24"
-                 class="h-5"
-                 stroke="currentColor"
-                 stroke-width="2"
-                 fill="none"
-                 stroke-linecap="round"
-                 stroke-linejoin="round">
-                <rect x="3"
-                      y="3"
-                      width="7"
-                      height="7" />
-                <rect x="14"
-                      y="3"
-                      width="7"
-                      height="7" />
-                <rect x="14"
-                      y="14"
-                      width="7"
-                      height="7" />
-                <rect x="3"
-                      y="14"
-                      width="7"
-                      height="7" />
-            </svg>
-        </div>
-    </div>
-
-    <div class="section-b al-center d-flex jc-between">
-
-        <div class="box">
-            <span>logo</span>
-            <h3>Title</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro officiis culpa, ut
-                neque quasi commodi temporibus voluptas quaerat, distinctio blanditiis ipsum ex
-                laboriosam fuga molestias qui voluptate corporis sit fugit.</p>
-        </div>
-
-        <div class="box">
-            <span>logo</span>
-            <h3>Title</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro officiis culpa, ut
-                neque quasi commodi temporibus voluptas quaerat, distinctio blanditiis ipsum ex
-                laboriosam fuga molestias qui voluptate corporis sit fugit.</p>
-        </div>
-
-        <div class="box">
-            <span>logo</span>
-            <h3>Title</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro officiis culpa, ut
-                neque quasi commodi temporibus voluptas quaerat, distinctio blanditiis ipsum ex
-                laboriosam fuga molestias qui voluptate corporis sit fugit.</p>
-        </div>
-
-    </div>
-
+    {% block content %}{% endblock content %}
 
 
     <footer>
