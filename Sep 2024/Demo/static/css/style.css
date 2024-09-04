@@ -81,4 +81,17 @@ header {
     padding: 20px;
 }
 
-.box-footer {}
+
+/* to apply background image inside the css file we need to use the relative path. */
+.bg-img {
+    /*using object-fit and object-position to fit our image into box.*/
+    background-image: url("../images/ash-img.jpg");
+    /* object-fit: cover; */
+    /*Note: object-fit only applied on the img element*/
+    /* object-position: center; */
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    width: 250px;
+    color: whitesmoke;
+}

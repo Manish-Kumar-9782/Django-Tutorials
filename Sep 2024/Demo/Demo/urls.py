@@ -22,7 +22,7 @@ from .views import home_page, records_page, about_page
 
 # a function called view
 
-# http://127.0.0.1:8000/about
+# http://127.0.0.1:8000
 urlpatterns = [
     path("", view=home_page, name="home_page"),
     path("records/", view=records_page, name="records"),
