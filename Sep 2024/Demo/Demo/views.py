@@ -11,6 +11,10 @@ def about_page(request):
     return render(request, "About.html")
 
 
+def django_notes(request):
+    return render(request, "pages/django_notes.html")
+
+
 def records_page(request):
 
     groups = {

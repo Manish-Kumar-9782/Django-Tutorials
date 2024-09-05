@@ -95,3 +95,22 @@ header {
     width: 250px;
     color: whitesmoke;
 }
+
+
+.notes {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+.notes-container {}
+
+.notes-content {
+    flex: 0.7;
+    padding: 20px;
+}
+
+.notes-bookmarks {
+    background-color: #f0f0f0;
+    flex: 0.3;
+    padding: 15px;
+}

@@ -15,5 +15,5 @@ Q: How to apply extends tag
 1. create a place holder block (with a name) inside the parent template (index.html)
 2. Create a child template (home_page.html)
 3. create a block with same name created inside the parent template and put some content inside that.
-4. put a `extends` tag for extending parent html template. (`{% extends "index.html" %}`).
-5.
+4. put a `extends` tag inside the child template (`home_page.html`) for extending parent html template. ( `{% extends "index.html" %}`).
+5. Chage your templage

@@ -1,0 +1,169 @@
+{% extends "index.html" %}
+
+
+{% block content %}
+
+<div class="notes notes-container d-flex">
+
+    <div class="notes-content">
+        <h1 id="Django-Documentation">Django documentation¶</h1>
+        Everything you need to know about Django.
+
+        <article>
+
+            <h2 id="first-step">First steps¶</h2>
+            Are you new to Django or to programming? This is the place to start!
+
+            <ul>
+                <li>From scratch: Overview | Installation</li>
+
+                <li>
+                    Tutorial: Part 1: Requests and responses | Part 2: Models and the admin site |
+                    Part
+                    3:
+                    Views and
+                    templates | Part 4: Forms and generic views | Part 5: Testing | Part 6: Static
+                    files
+                    |
+                    Part 7:
+                    Customizing the admin site | Part 8: Adding third-party packages
+                </li>
+
+                <li>Advanced Tutorials: How to write reusable apps | Writing your first contribution
+                    to
+                    Django</li>
+            </ul>
+        </article>
+        <hr>
+
+        <article>
+            <h2 id="getting-help">Getting help¶</h2>
+            Having trouble? We’d like to help!
+
+            <ul>
+                <li>Try the FAQ – it’s got answers to many common questions.</li>
+                <li>
+                    Looking for specific information? Try the Index, Module Index or the detailed
+                    table
+                    of
+                    contents.
+                </li>
+                <li>Not found anything? See FAQ: Getting Help for information on getting support and
+                    asking</li>
+                questions to the community.
+                <li>Report bugs with Django in our ticket tracker.</li>
+            </ul>
+        </article>
+
+        <hr>
+
+        <article>
+
+            <h2 id="documentation-is-organized">How the documentation is organized¶</h2>
+            Django has a lot of documentation. A high-level overview of how it’s organized will help
+            you
+            know where to look for certain things:
+
+            <ul>
+                <li>
+                    Tutorials take you by the hand through a series of steps to create a web
+                    application. Start
+                    here if you’re new to Django or web application development. Also look at the
+                    “First
+                    steps”.
+                </li>
+                <li>
+
+                    Topic guides discuss key topics and concepts at a fairly high level and provide
+                    useful
+                    background information and explanation.
+                </li>
+
+                <li>
+                    Reference guides contain technical reference for APIs and other aspects of
+                    Django’s
+                    machinery. They describe how it works and how to use it but assume that you have
+                    a
+                    basic
+                    understanding of key concepts.
+                </li>
+
+                <li>
+                    How-to guides are recipes. They guide you through the steps involved in
+                    addressing
+                    key
+                    problems and use-cases. They are more advanced than tutorials and assume some
+                    knowledge of
+                    how Django works.
+                </li>
+            </ul>
+
+        </article>
+        <hr>
+
+        <article>
+            <h2 id="model-layer">The model layer¶</h2>
+            Django provides an abstraction layer (the “models”) for structuring and manipulating the
+            data of your web application. Learn more about it below:
+
+            <ul>
+                <li>Models: Introduction to models | Field types | Indexes | Meta options | Model
+                    class</li>
+                <li>
+                    QuerySets: Making queries | QuerySet method reference | Lookup expressions
+
+                </li>
+                <li>
+                    Model instances: Instance methods | Accessing related objects
+
+                </li>
+                <li>
+                    Migrations: Introduction to Migrations | Operations reference | SchemaEditor |
+                    Writing
+                    migrations
+
+                </li>
+                <li>
+                    Advanced: Managers | Raw SQL | Transactions | Aggregation | Search | Custom
+                    fields |
+                    Multiple databases | Custom lookups | Query Expressions | Conditional
+                    Expressions |
+                    Database Functions
+
+                </li>
+                <li>
+                    Other: Supported databases | Legacy databases | Providing initial data |
+                    Optimize
+                    database access | PostgreSQL specific features
+                </li>
+            </ul>
+        </article>
+
+    </div>
+
+    <aside class="notes-bookmarks">
+
+        <ul>
+            <li>
+                <a href="#Django-Documentation">Django Documentation</a>
+            </li>
+            <li>
+                <a href="#first-step">First Step</a>
+            </li>
+            <li>
+                <a href="#getting-help">Getting Help</a>
+            </li>
+            <li>
+                <a href="#documentation-is-organized">How the documentation is organized</a>
+            </li>
+            <li>
+                <a href="#model-layer">The Model Layer</a>
+            </li>
+        </ul>
+    </aside>
+
+</div>
+
+
+
+{% endblock content %}
