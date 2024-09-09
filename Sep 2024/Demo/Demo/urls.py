@@ -30,5 +30,6 @@ urlpatterns = [
     path("notes/", view=django_notes, name="notes"),
     path('admin/', admin.site.urls),
     path("shopping/",  include("Shopping.urls")),
+    path("htmlapps/",  include("htmlapps.urls")),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
