@@ -6,3 +6,7 @@ from django.shortcuts import render
 def table_extra(request):
 
     return render(request, "html_pages/table_extra.html")
+
+
+def button_test(request):
+    return render(request, "html_pages/button.html")

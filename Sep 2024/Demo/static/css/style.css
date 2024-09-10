@@ -41,6 +41,11 @@ header {
     gap: 15px;
 }
 
+.nav-list {
+    display: flex;
+    align-items: center;
+}
+
 .nav-list .nav-item {
     display: inline;
     margin-inline: 20px;
@@ -113,4 +118,28 @@ header {
     background-color: #f0f0f0;
     flex: 0.3;
     padding: 15px;
+}
+
+
+ul.nav-list a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul.nav-list li.nav-item::after {
+    content: "";
+    display: block;
+    position: relative;
+    width: 0%;
+    height: 3px;
+    background-color: #007584;
+    /* transition: width, background-color 0.3s ease-in-out; */
+    transition-property: width, background-color;
+    transition-duration: 0.3s, 0.3s;
+    transition-timing-function: ease-in-out, ease-in-out;
+}
+
+ul.nav-list li.nav-item:hover::after {
+    width: 100%;
+    background-color: #84001d;
 }
