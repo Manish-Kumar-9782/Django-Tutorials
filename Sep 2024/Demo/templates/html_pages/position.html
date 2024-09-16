@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Position Property</title>
+
+    <style>
+        .container {
+            display: flex;
+            column-gap: 10px;
+            padding: 10px;
+            background-color: chocolate;
+
+        }
+
+        .container-big {
+            margin: 20px;
+            width: 500px;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: dodgerblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+
+        .position-relative {
+            position: relative;
+            left: 100px;
+            top: 50px;
+            background-color: rgba(0, 128, 0, 0.418);
+
+        }
+
+        .position-absolute {}
+    </style>
+</head>
+
+<!-- 
+    1. static
+    2. relative
+    3. absolute
+    4. fixed
+    5. sticky
+
+-->
+
+<body>
+
+
+
+
+</body>
+
+<div class="container">
+    <div class="box">
+        <h1>1</h1>
+    </div>
+    <div class="box position-relative">
+        <h1>2</h1>
+    </div>
+    <div class="box">
+        <h1>3</h1>
+    </div>
+</div>
+
+
+<div class="div container container-big">
+    <div class="box">
+        <h1>1</h1>
+    </div>
+    <div class="box">
+        <h1>2</h1>
+    </div>
+    <div class="box">
+        <h1>3</h1>
+    </div>
+</div>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .input_box {
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .input_box label {
+            display: block;
+            margin: 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="">
+
+        <div class="input_box">
+            <label for="name">User Name:</label>
+            <input id="name"
+                   type="text"
+                   placeholder="parkash soni"
+                   name="username">
+        </div>
+
+
+        <div class="input_box">
+            <label for="phone_number">Phone number:</label>
+            <input id="phone_number"
+                   type="tel"
+                   placeholder="+91 978-569-2541"
+                   name="phone_number">
+        </div>
+
+
+
+        <div class="input_box">
+            <label for="email">Email Address:</label>
+            <input id="email"
+                   type="email"
+                   placeholder="example@domain.com"
+                   name="email">
+        </div>
+
+        <div class="input_box">
+            <label for="password">Password:</label>
+            <input id="password"
+                   type="password"
+                   name="password">
+        </div>
+
+        <div class="input_box">
+            <label for="c_password">Confirm Password:</label>
+            <input id="c_password"
+                   type="password"
+                   name="c_password">
+        </div>
+
+
+        <input type="submit">
+    </form>
+
+
+</body>
+
+</html>
