@@ -44,7 +44,11 @@
                     <a href="{% url 'about' %}">About Us</a>
                 </li>
                 <li class="nav-item">Contact</li>
-                <li class="nav-item">User</li>
+
+                {%  if request.user.is_authenticated %}
+                <li class="nav-item">User: {{request.user.username}}</li>
+                {%  endif %}
+
             </ul>
 
         </div>
@@ -67,6 +71,13 @@
             </li>
             <li class="nav-item">
                 <a href="{% url 'user_registration' %}">User Registration</a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'login' %}">Login</a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{% url 'logout' %}">logout</a>
             </li>
         </ul>
     </div>

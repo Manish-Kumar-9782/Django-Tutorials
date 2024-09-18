@@ -143,3 +143,18 @@ ul.nav-list li.nav-item:hover::after {
     width: 100%;
     background-color: #84001d;
 }
+
+.input_box {
+    padding: 10px;
+    margin: 10px;
+}
+
+.input_box label {
+    display: block;
+    margin: 0px;
+}
+
+
+.error {
+    color: rgb(255, 58, 58);
+}

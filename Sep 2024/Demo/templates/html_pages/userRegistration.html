@@ -7,6 +7,8 @@
           content="width=device-width, initial-scale=1.0">
     <title>User Registration</title>
 
+
+
     <style>
         body {
             display: flex;
@@ -23,12 +25,18 @@
             display: block;
             margin: 0px;
         }
+
+        .error {
+            color: rgb(252, 48, 48);
+        }
     </style>
 </head>
 
 <body>
 
-    <form action="">
+    <form action=""
+          method="post">
+        {% csrf_token %}
 
         <div class="input_box">
             <label for="name">User Name:</label>
@@ -71,6 +79,7 @@
                    name="c_password">
         </div>
 
+        <span class="error">{{error}}</span> <br>
 
         <input type="submit">
     </form>
