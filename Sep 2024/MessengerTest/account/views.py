@@ -18,12 +18,8 @@ def login(request):
     if request.method == "POST":
 
         # print(request.POST)
-
-        username = request.POST["username"]
-        password = request.POST["password"]
-
-        # print("username: ", username)
-        # print("password: ", password)
+        username = request.POST.get("username")
+        password = request.POST.get("password")
 
         # testing that user information is correct and a genuine user exist.
         user = authenticate(request,  username=username, password=password)
@@ -47,13 +43,24 @@ def register(request):
     if request.method == "POST":
 
         # retrieve data from POST  request.
-        username = request.POST["username"]
-        email = request.POST["email"]
-        password = request.POST["password"]
-        c_password = request.POST["c_password"]
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+        c_password = request.POST.get("c_password")
 
         if password != c_password:
             return render(request, "registration.html", {'error': 'Passwords do not match'})
+
+        # testing that a user already exist or not with incoming username
+
+        # if a username does not exist we will have another error if use .get method.
+        # to solve this problem we will use filter method.
+        # x_user = User.objects.get(username=username)
+
+        x_user = User.objects.filter(username=username).first()
+
+        if x_user:
+            return render(request,  "registration.html", {'error': f'An account already exist with username: {username}'})
 
         # first create a user using User model by passing user information.
         user = User.objects.create_user(username, email, password)
