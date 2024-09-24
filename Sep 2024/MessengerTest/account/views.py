@@ -69,3 +69,8 @@ def register(request):
         user.save()
 
         return redirect("login")
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect("login")
