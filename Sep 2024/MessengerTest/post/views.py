@@ -24,3 +24,12 @@ def add_post(request):
             post.save()
 
             return redirect("home")
+
+
+def news_feed(request):
+
+    if request.method == "GET":
+
+        posts = Post.objects.all()  # getting all posts.
+
+        return render(request, 'news-feed.html', {"posts": posts})
