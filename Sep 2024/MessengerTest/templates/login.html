@@ -2,27 +2,41 @@
 
 {% block content %}
 
-<form action=""
-      method="post">
-    {% csrf_token %}
+<div class="form-container">
+       <form class="form-box"
+             action=""
+             method="post">
+              {% csrf_token %}
 
-    <label for="username">User Name:</label>
-    <input type="text"
-           id="username"
-           name="username"> <br>
+              <div class="form-control-box">
+                     <label class="form-control-label"
+                            for="username">User Name:</label>
+                     <input class="form-control"
+                            type="text"
+                            id="username"
+                            name="username">
+              </div>
 
-    <label for="password">Password:</label>
-    <input type="text"
-           id="password"
-           name="password"> <br>
+              <div class="form-control-box">
+                     <label class="form-control-label"
+                            for="password">Password:</label>
+                     <input class="form-control"
+                            type="text"
+                            id="password"
+                            name="password">
 
-    <span style="color:red;">{{error}}</span>
+              </div>
+              <span style="color:red;">{{error}}</span>
 
-    <input type="submit">
-</form>
+              <input class="form-control-button"
+                     type="submit">
 
-<div>
-    <a href="{% url 'register' %}">Register here</a>
+              <br>
+              <p>Don't have an account? <a href="{% url 'register' %}">Register Here</a></p>
+
+       </form>
 </div>
+
+
 
 {% endblock content %}

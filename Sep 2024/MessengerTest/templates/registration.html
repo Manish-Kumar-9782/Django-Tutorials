@@ -3,35 +3,58 @@
 {% block content %}
 
 
-<form action=""
-      method="post">
-    {% csrf_token %}
+<div class="form-container">
+       <form class="form-box"
+             action=""
+             method="post">
+              {% csrf_token %}
 
-    <label for="username">User Name:</label>
-    <input type="text"
-           id="username"
-           name="username"> <br>
+              <div class="form-control-box">
+                     <label class="form-control-label"
+                            for="username">User Name:</label>
+                     <input class="form-control"
+                            type="text"
+                            id="username"
+                            name="username">
+              </div>
 
-    <label for="email">Email:</label>
-    <input type="email"
-           id="email"
-           name="email"> <br>
+              <div class="form-control-box">
+                     <label class="form-control-label"
+                            for="email">Email:</label>
+                     <input class="form-control"
+                            type="email"
+                            id="email"
+                            name="email">
+              </div>
 
-    <label for="password">Password:</label>
-    <input type="password"
-           id="password"
-           name="password"> <br>
+              <div class="form-control-box">
+                     <label class="form-control-label"
+                            for="password">Password:</label>
+                     <input class="form-control"
+                            type="password"
+                            id="password"
+                            name="password">
+              </div>
 
-    <label for="c_password">Confirm Password:</label>
-    <input type="password"
-           id="c_password"
-           name="c_password"> <br>
+              <div class="form-control-box">
+                     <label class="form-control-label"
+                            for="c_password">Confirm Password:</label>
+                     <input class="form-control"
+                            type="password"
+                            id="c_password"
+                            name="c_password">
+              </div>
 
-    <span style="color: red">{{ error }}</span> <br>
+              <span style="color: red">{{ error }}</span> <br>
 
 
-    <input type="submit">
+              <input class="form-control-button"
+                     type="submit">
 
-</form>
+              <p>Already have an account ? <a href="{% url 'login' %}">Login</a></p>
+
+
+       </form>
+</div>
 
 {% endblock content %}
