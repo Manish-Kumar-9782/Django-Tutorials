@@ -74,3 +74,9 @@ def register(request):
 def logout(request):
     auth.logout(request)
     return redirect("login")
+
+
+def profile_view(request):
+
+    if request.user.is_authenticated and request.method == "GET":
+        return render(request, 'user-profile.html')

@@ -2,26 +2,29 @@
 
 
 {% block content %}
-<h1>Home Page : user {{request.user.username}}</h1>
 
-<form action="{% url 'add_post' %}"
-      method="post">
+
+<div class="form-container">
+  <form class="form-box"
+        action="{% url 'add_post' %}"
+        method="post">
     {% csrf_token %}
 
     <span style="color: red;">{{error}}</span> <br>
-    <label for="message">Post Message</label> <br>
-    <textarea name="message"
+
+    <label class="form-control-label"
+           for="message">Post Message</label> <br>
+    <textarea class="form-control"
+              name="message"
               id="message"
               rows="4"
               cols="30"
               maxlength="255">{{message}}</textarea> <br>
 
-    <input type="submit"
+    <input class="form-control-button"
+           type="submit"
            value="submit"> <br>
-</form>
+  </form>
+</div>
 
-
-<button type="button">
-    <a href="{% url 'logout' %}">Logout</a>
-</button>
 {% endblock content %}

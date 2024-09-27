@@ -1,0 +1,42 @@
+{% extends "index.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="profile-container">
+
+    <div class="profile-box">
+
+        <div class="profile-img-container">
+            <img src="{% static 'images/witcher.jpg' %}"
+                 alt=""
+                 class="profile-img">
+        </div>
+
+        <div class="profile-content">
+            <table class="profile-tabular-info">
+                <tr>
+                    <td class="title">User Name: </td>
+                    <td class="value">{{request.user.username}}</td>
+                </tr>
+                <tr>
+                    <td class="title">First Name: </td>
+                    <td class="value">{{request.user.first_name}}</td>
+                </tr>
+                <tr>
+                    <td class="title">Last Name: </td>
+                    <td class="value">{{request.user.last_name}}</td>
+                </tr>
+                <tr>
+                    <td class="title">Email: </td>
+                    <td class="value">{{request.user.email}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock content %}

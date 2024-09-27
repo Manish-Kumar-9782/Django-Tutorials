@@ -156,13 +156,14 @@
         .form-control-button {
             background-color: green;
             color: white;
-            padding: 4px 8px;
+            padding: 6px 8px;
             width: 100%;
-            border: 4px solid green;
+            border: 1px solid green;
+            border-radius: 8px;
         }
 
         .form-control-button:hover {
-            border: 4px solid rgb(0, 82, 0);
+            box-shadow: inset 1px 1px 30px 1px rgb(1, 53, 1);
         }
 
         .form-control-button:active {
@@ -192,11 +193,53 @@
         }
     </style>
 
+    <style id="user-profile">
+        .profile-container {
+            padding: 3rem;
+            margin: 2rem;
+
+        }
+
+        .profile-box {
+            display: flex;
+            border: 1px solid lightgray;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .profile-img-container {
+            flex: 3;
+        }
+
+        .profile-content {
+            flex: 7;
+            padding-left: 3rem;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .profile-tabular-info .title {
+            font-size: 2.5rem
+        }
+
+        .profile-tabular-info .value {
+            font-size: 1.8rem;
+            padding-left: 10px;
+        }
+    </style>
+
 </head>
 
 <body>
 
+    {% if request.user.is_authenticated %}
     {% include "header.html" %}
+    {% endif %}
 
 
     {% block content %}
