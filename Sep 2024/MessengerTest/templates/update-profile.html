@@ -1,0 +1,74 @@
+{% extends "index.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="profile-container">
+
+    <div class="profile-box">
+
+        <div class="profile-img-container">
+            <img src="{% static 'images/witcher.jpg' %}"
+                 alt=""
+                 class="profile-img">
+        </div>
+
+        <div class="profile-content">
+            <form action=""
+                  method="post">
+                {% csrf_token %}
+
+                <table class="profile-tabular-info">
+                    <tr>
+                        <td class="title">User Name: </td>
+                        <td class="value">
+                            <input class="form-control"
+                                   type="text"
+                                   value="{{request.user.username}}"
+                                   name="username">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title">First Name: </td>
+                        <td class="value">
+                            <input type="text"
+                                   class="form-control"
+                                   value="{{request.user.first_name}}"
+                                   name="first_name">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title">Last Name: </td>
+                        <td class="value">
+                            <input type="text"
+                                   class="form-control"
+                                   value="{{request.user.last_name}}"
+                                   name="last_name">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title">Email: </td>
+                        <td class="value">
+                            <input type="text"
+                                   class="form-control"
+                                   value="{{request.user.email}}"
+                                   name="email">
+                        </td>
+                    </tr>
+                </table>
+
+                <input type="submit"
+                       value="Save Changes">
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+{% endblock content %}

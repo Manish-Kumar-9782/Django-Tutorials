@@ -80,3 +80,27 @@ def profile_view(request):
 
     if request.user.is_authenticated and request.method == "GET":
         return render(request, 'user-profile.html')
+
+
+def updateProfile(request):
+
+    if request.user.is_authenticated and request.method == "GET":
+        return render(request,  'update-profile.html')
+
+    if request.user.is_authenticated and request.method == "POST":
+
+        username = request.POST.get("username")
+        first_name = request.POST.get("first_name")
+        last_name = request.POST.get("last_name")
+        email = request.POST.get("email")
+
+        print(request.POST)
+
+        user = User.objects.get(id=request.user.id)
+
+        user.username = username
+        user.first_name = first_name
+        user.last_name = last_name
+        user.email = email
+        user.save()
+        return redirect("profile")
