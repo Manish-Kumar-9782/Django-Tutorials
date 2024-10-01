@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+
+
+{% block content %}
+
+
+<h1 style="text-align: center;">Add TaskList</h1>
+<div class="form-container">
+
+    <form class="form-box"
+          action=""
+          method="post">
+        {% csrf_token %}
+
+        <div>
+            <label for="task_title"
+                   class="form-control-label">Task Title</label>
+            <input id="task_title"
+                   type="text"
+                   class="form-control"
+                   name="title">
+        </div>
+
+        <div>
+            <label for="task_category"
+                   class="form-control-label">Task Category</label>
+            <input id="task_category"
+                   type="text"
+                   class="form-control"
+                   name="category">
+        </div>
+
+        <input type="submit"
+               value="add task">
+
+    </form>
+
+</div>
+
+{% endblock content %}
