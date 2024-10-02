@@ -3,19 +3,26 @@
 {% block content %}
 
 <button>
-    <a href="{% url 'add_task' %}">Add Task</a>
+    <a href="{% url 'add_taskList' %}">Add Task</a>
 </button>
 
 <div class="task-list-container">
-    {% for task in tasks %}
+    {% for taskList in taskLists %}
     <div class="task-list-card">
 
-        <h1 class="task-list-title">{{task.title}}</h1>
-        <span class="task-list-category">{{task.category}}</span>
+        <h1 class="task-list-title">{{taskList.title}}</h1>
+        <span class="task-list-category">{{taskList.category}}</span>
 
         <ul class="task-list">
             <li class="task-list-item"></li>
         </ul>
+
+        <form action="{% url 'add_task' taskList.id %}">
+            <input type="text"
+                   name="text">
+            <input type="submit"
+                   value="add">
+        </form>
     </div>
 
     {% endfor %}

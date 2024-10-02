@@ -6,13 +6,11 @@ from .models import TaskList
 def task_list(request):
 
     if request.method == "GET":
-
-        tasks = TaskList.objects.all()
-
-        return render(request, 'home.html', {"tasks": tasks})
+        taskLists = TaskList.objects.all()
+        return render(request, 'home.html', {"taskLists": taskLists})
 
 
-def add_task(request):
+def add_taskList(request):
 
     if request.method == "GET":
         return render(request, "tasks/add_task.html")
@@ -27,3 +25,9 @@ def add_task(request):
         task.save()
 
         return redirect("view_tasks")
+
+
+def add_task(request, taskListId):
+    # here weill save task_list's task in Task model
+    # using TaskList object.
+    pass
