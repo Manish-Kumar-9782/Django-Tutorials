@@ -14,14 +14,27 @@
         <span class="task-list-category">{{taskList.category}}</span>
 
         <ul class="task-list">
-            <li class="task-list-item"></li>
+            {% for task in taskList.tasks.all %}
+            <li class="task-list-item">{{task}}</li>
+            {% endfor %}
         </ul>
 
-        <form action="{% url 'add_task' taskList.id %}">
-            <input type="text"
+        <form action="{% url 'add_task' taskList.id %}"
+              method="POST">
+            {% csrf_token %}
+            <input class="add-task-input"
+                   type="text"
                    name="text">
-            <input type="submit"
-                   value="add">
+            <!-- <input type="submit"
+                   value="add"> -->
+        </form>
+
+        <form action="{% url 'delete_task' taskList.id %}"
+              method="POST">
+            {% csrf_token %}
+            <input class="task-delete-button"
+                   type="submit"
+                   value="X">
         </form>
     </div>
 

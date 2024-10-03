@@ -78,6 +78,39 @@
             border-radius: 8px;
             box-shadow: 1px 1px 10px 2px lightgray;
             min-width: 400px;
+            padding: 10px;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .task-delete-button {
+            position: absolute;
+            top: 0px;
+            left: 100%;
+            translate: -110% 10px;
+            background-color: inherit;
+            border: 0px;
+            padding: 4px;
+            border-radius: 8px;
+        }
+
+        .task-delete-button:hover {
+            background-color: rgb(60, 60, 60);
+            color: white;
+        }
+
+        .add-task-input {
+            box-sizing: border-box;
+            padding: 4px;
+            width: 100%;
+            border: 0px;
+            border-bottom: 1px solid rgb(93, 93, 93);
+            box-shadow: inset 1px 1px 5px 1px lightgray;
+        }
+
+        .add-task-input:focus {
+            border: 0px;
+            outline: 0px;
         }
     </style>
 

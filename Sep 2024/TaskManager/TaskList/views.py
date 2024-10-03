@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from .models import TaskList
+from django.shortcuts import render, redirect, HttpResponse
+from .models import TaskList, Task
 # Create your views here.
 
 
@@ -7,6 +7,10 @@ def task_list(request):
 
     if request.method == "GET":
         taskLists = TaskList.objects.all()
+
+        for task_list in taskLists:
+            print(task_list.tasks.all())
+
         return render(request, 'home.html', {"taskLists": taskLists})
 
 
@@ -30,4 +34,21 @@ def add_taskList(request):
 def add_task(request, taskListId):
     # here weill save task_list's task in Task model
     # using TaskList object.
-    pass
+    if request.method == "POST":
+        text = request.POST.get("text")
+        # first retrieve the TaskList
+        taskList = TaskList.objects.get(id=taskListId)
+        task = Task(text=text, task_list=taskList)
+        task.save()
+        return redirect("view_tasks")
+
+    return HttpResponse("<h1>Delete request only supports POST request</h1>")
+
+
+def delete_task(request, taskListId):
+
+    if request.method == "POST":
+        task = TaskList.objects.get(id=taskListId)
+        task.delete()
+
+        return redirect("view_tasks")

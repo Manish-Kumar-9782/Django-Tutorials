@@ -12,6 +12,9 @@ class Task(models.Model):
     task_list = models.ForeignKey(
         'TaskList', on_delete=models.CASCADE, related_name="tasks")
 
+    def __str__(self):
+        return self.text
+
 
 class TaskList(models.Model):
 
