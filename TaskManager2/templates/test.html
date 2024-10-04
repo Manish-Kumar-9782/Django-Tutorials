@@ -1,0 +1,15 @@
+<ul class="task-list">
+    {% for task in taskList.tasks.all %}
+    <li class="task-list-item">{{task}}</li>
+    {% endfor %}
+</ul>
+
+
+
+<form action="{% url 'delete_task' taskList.id %}"
+      method="POST">
+    {% csrf_token %}
+    <input class="task-delete-button"
+           type="submit"
+           value="X">
+</form>

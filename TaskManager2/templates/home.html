@@ -2,44 +2,6 @@
 
 {% block content %}
 
-<button>
-    <a href="{% url 'add_taskList' %}">Add Task</a>
-</button>
-
-<div class="task-list-container">
-    {% for taskList in taskLists %}
-    <div class="task-list-card">
-
-        <h1 class="task-list-title">{{taskList.title}}</h1>
-        <span class="task-list-category">{{taskList.category}}</span>
-
-        <ul class="task-list">
-            {% for task in taskList.tasks.all %}
-            <li class="task-list-item">{{task}}</li>
-            {% endfor %}
-        </ul>
-
-        <form action="{% url 'add_task' taskList.id %}"
-              method="POST">
-            {% csrf_token %}
-            <input class="add-task-input"
-                   type="text"
-                   name="text">
-            <!-- <input type="submit"
-                   value="add"> -->
-        </form>
-
-        <form action="{% url 'delete_task' taskList.id %}"
-              method="POST">
-            {% csrf_token %}
-            <input class="task-delete-button"
-                   type="submit"
-                   value="X">
-        </form>
-    </div>
-
-    {% endfor %}
-</div>
-
+{% include "tasks.html" %}
 
 {% endblock content %}

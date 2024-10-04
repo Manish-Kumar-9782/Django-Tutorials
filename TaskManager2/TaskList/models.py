@@ -3,11 +3,28 @@ from django.db import models
 # Create your models here.
 
 
+class Task(models.Model):
+    text = models.CharField(max_length=100)
+    isCompleted = models.BooleanField(default=False)
+    priority = models.CharField(max_length=15, default="low")
+    task_list = models.ForeignKey('TaskList', on_delete=models.CASCADE)
+
+# A Single TaskList object can have multiple Task object's
+# oneToMany relation.
+
+
 class TaskList(models.Model):
     title = models.CharField(max_length=50)
     category = models.CharField(max_length=15)
 
+    # now we will add few more fields
+    # a field to store time at which taskList created.
+    created = models.DateTimeField(auto_now_add=True)
+    # a filed to store time at which taskList last modified.
+    lastModify = models.DateTimeField(auto_now=True)
 
+
+# Whenever you create you models or update models
 # first generate your migrations by following command
 # --> python manage.py makemigrations TaskList
 

@@ -5,8 +5,8 @@ from .models import TaskList
 
 
 def task_list(request):
-
-    return render(request, "index.html")
+    taskLists = TaskList.objects.all()  # get all taskLists from database
+    return render(request, "home.html", {"taskLists": taskLists})
 
 
 def add_task(request):
