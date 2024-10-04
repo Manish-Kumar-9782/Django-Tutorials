@@ -52,3 +52,22 @@ def delete_task(request, taskListId):
         task.delete()
 
         return redirect("view_tasks")
+
+
+def update_taskList_tasks(request):
+
+    if request.method == "POST":
+        taskListId = request.POST.get("taskListId")
+        taskList = TaskList.objects.get(id=taskListId)
+
+        for task in taskList.tasks.all():
+            # assert isinstance(task, Task)
+
+            task_isCompleted = bool(request.POST.get(f"task-{task.id}", False))
+
+            # considering that not using javascript and only get values when checkbox
+            # is checked.
+            task.isCompleted = task_isCompleted  # updating task isCompleted status
+            task.save()
+
+        return redirect("view_tasks")
