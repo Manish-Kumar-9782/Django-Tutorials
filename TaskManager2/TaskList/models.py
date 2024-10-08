@@ -7,7 +7,8 @@ class Task(models.Model):
     text = models.CharField(max_length=100)
     isCompleted = models.BooleanField(default=False)
     priority = models.CharField(max_length=15, default="low")
-    task_list = models.ForeignKey('TaskList', on_delete=models.CASCADE)
+    task_list = models.ForeignKey(
+        'TaskList', on_delete=models.CASCADE, related_name="tasks")
 
 # A Single TaskList object can have multiple Task object's
 # oneToMany relation.

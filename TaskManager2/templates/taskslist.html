@@ -1,0 +1,33 @@
+<div class="task-list-container">
+    {% for taskList in taskLists %}
+    <div class="task-list-card">
+
+        <h1 class="task-list-title">{{taskList.title}}</h1>
+        <span class="task-list-category">{{taskList.category}}</span>
+
+        <!-- a ul task list, using for loop to display all task of the 
+         current task list. -->
+        <ul class="task-list">
+            {% for task in taskList.tasks.all %}
+            <li class="task-list-item">{{task.text}}</li>
+            {% endfor %}
+        </ul>
+
+
+
+        <!-- a from to add a new task to taskList -->
+        <hr>
+        <form action="{% url 'add_task' %}"
+              method="POST">
+            {% csrf_token %}
+            <input class="add-task-input"
+                   type="text"
+                   name="text">
+            <input type="hidden"
+                   name="taskListId"
+                   value="{{taskList.id}}">
+        </form>
+    </div>
+
+    {% endfor %}
+</div>
