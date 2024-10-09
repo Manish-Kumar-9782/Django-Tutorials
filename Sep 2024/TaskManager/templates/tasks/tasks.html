@@ -1,0 +1,75 @@
+<div class="task-list-container">
+    {% for taskList in taskLists %}
+    <div class="task-list-card">
+
+        <h1 class="task-list-title">{{taskList.title}}</h1>
+        <span class="task-list-category">{{taskList.category}}</span>
+
+
+        <form action="{% url 'update_taskList_tasks' %}"
+              method="POST">
+            {% csrf_token %}
+            <input type="text"
+                   name="taskListId"
+                   value="{{taskList.id}}"
+                   hidden>
+            <ul class="task-list">
+                {% for task in taskList.tasks.all %}
+                <li class="task-list-item">
+
+                    <div>
+                        <input class="task-list-item-checkbox"
+                               type="checkbox"
+                               name="task-{{task.id}}"
+                               id="task-{{task.id}}"
+                               {% if task.isCompleted %}
+                               checked
+                               {% endif %}>
+
+                        <span class="task-list-item-title">
+                            {{task}}
+                        </span>
+                    </div>
+
+                    <div class="list-item-actions">
+                        <a href="{% url 'update_task' task.id %}"> <i class="bi bi-pencil"></i></a>
+                        <a href="{% url 'delete_task' task.id %}"><i class="bi bi-x-lg"></i></a>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            <input type="submit"
+                   value="save">
+        </form>
+
+
+        <!--  -->
+
+        <form action="
+        {% if update.taskListId == taskList.id %}
+        {% url 'update_task' update.task.id %}
+        {% else %}
+        {% url 'add_task' taskList.id %}
+        {% endif %}
+        "
+              method="POST">
+            {% csrf_token %}
+            <input class="add-task-input"
+                   type="text"
+                   name="text"
+                   value="{% if update.taskListId == taskList.id %}{{update.task.text}}{% endif %}">
+            <!-- <input type="submit"
+                   value="add"> -->
+        </form>
+
+        <form action="{% url 'delete_taskList' taskList.id %}"
+              method="POST">
+            {% csrf_token %}
+            <input class="task-delete-button"
+                   type="submit"
+                   value="X">
+        </form>
+    </div>
+
+    {% endfor %}
+</div>
