@@ -9,7 +9,14 @@
          current task list. -->
         <ul class="task-list">
             {% for task in taskList.tasks.all %}
-            <li class="task-list-item">{{task.text}}</li>
+            <li class="task-list-item">
+                <span>{{task.text}}</span>
+                <div class="list-item-actions">
+                    <a href="{% url 'delete_task' task.id %}">
+                        <i class="bi bi-x-lg"></i>
+                    </a>
+                </div>
+            </li>
             {% endfor %}
         </ul>
 

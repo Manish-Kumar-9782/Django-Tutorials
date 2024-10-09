@@ -9,6 +9,7 @@ def task_list(request):
     return render(request, "home.html", {"taskLists": taskLists})
 
 
+# to add a new TaskList
 def add_taskList(request):
 
     if request.method == "GET":
@@ -25,6 +26,7 @@ def add_taskList(request):
 
 
 # another function to  add a task.
+# to add a new task into existing TaskList
 def add_task(request):
 
     if request.method == "POST":
@@ -38,4 +40,13 @@ def add_task(request):
         task = Task(text=text, task_list=taskList)
         task.save()
 
+        return redirect("show_task_lists")
+
+
+# To delete a task from a TaskList
+def delete_task(request, taskId):
+
+    if request.method == "GET":
+        task = Task.objects.get(id=taskId)
+        task.delete()
         return redirect("show_task_lists")
