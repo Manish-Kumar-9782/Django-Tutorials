@@ -1,0 +1,43 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    align-items: center;
+    padding: 8px 2rem;
+    margin-bottom: 8px;
+    background-color: #1E201E;
+    color: white;
+}
+
+.header * {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+.header-nav {
+    list-style-type: none;
+    display: flex;
+    gap: 10px;
+
+}
+
+.add-tasklist-icon {
+    font-size: 1.4rem;
+}
+
+.add-tasklist-button {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.add-tasklist-button a {
+    text-decoration: none;
+    color: inherit;
+
+}
+
+
+
+.header-nav li {}

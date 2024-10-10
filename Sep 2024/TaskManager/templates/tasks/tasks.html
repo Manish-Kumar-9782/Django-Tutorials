@@ -45,13 +45,11 @@
 
         <!--  -->
 
-        <form action="
-        {% if update.taskListId == taskList.id %}
+        <form action="{% if update.taskListId == taskList.id %}
         {% url 'update_task' update.task.id %}
         {% else %}
         {% url 'add_task' taskList.id %}
-        {% endif %}
-        "
+        {% endif %}"
               method="POST">
             {% csrf_token %}
             <input class="add-task-input"
