@@ -1,0 +1,8 @@
+.main-container {
+    display: flex;
+    gap: 10px;
+}
+
+.content {
+    flex: 8.5;
+}

@@ -1,3 +1,31 @@
+:root {
+    --color-dark: 0deg;
+    --color-green: 117deg;
+    --color-red: 6deg;
+    --color-skyblue: 177deg;
+    --color-blue: 236deg;
+    --color-pink: 292deg;
+
+
+    --badge-text-saturation: 95%;
+    --badge-text-light: 18%;
+
+    --badge-bg-saturation: 93%;
+    --badge-bg-light: 64%;
+    --badge-bg-alpha: 34%;
+
+
+
+    --badge-bg-color: var(--color-dark);
+    --badge-bg-hsl: hsl(var(--badge-bg-color) var(--badge-bg-saturation) var(--badge-bg-light)/ var(--badge-bg-alpha));
+
+    --badge-text-color: var(--color-dark);
+
+    --badge-text-hsl: hsl(var(--badge-text-color) var(--badge-text-saturation) var(--badge-text-light))
+}
+
+
+
 .task-list-container {
     display: flex;
     gap: 1rem;
@@ -73,4 +101,24 @@
 
 input.task-list-item-checkbox:checked+.task-list-item-title {
     text-decoration: line-through;
+}
+
+
+
+
+.badge {
+    background-color: hsl(var(--badge-bg-color) var(--badge-bg-saturation) var(--badge-bg-light)/ var(--badge-bg-alpha));
+    padding: 2px 6px;
+    border-radius: 6px;
+    display: flex;
+    width: fit-content;
+    color: hsl(var(--badge-text-color) var(--badge-text-saturation) var(--badge-text-light));
+    align-items: center;
+    justify-content: center;
+    font-size: small;
+}
+
+.badge-red {
+    --badge-text-color: var(--color-red);
+    --badge-bg-color: var(--color-red);
 }
