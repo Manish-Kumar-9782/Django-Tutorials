@@ -2,8 +2,20 @@
     {% for taskList in taskLists %}
     <div class="task-list-card">
 
-        <h1 class="task-list-title">{{taskList.title}}</h1>
-        <span class="task-list-category badge">{{taskList.category}}</span>
+        <header>
+            <div class="d-flex al-center jc-between">
+                <h1 class="task-list-title">{{taskList.title}}</h1>
+                <form action="{% url 'delete_taskList' taskList.id %}"
+                      method="POST">
+                    {% csrf_token %}
+                    <input class="task-delete-button"
+                           type="submit"
+                           value="X">
+                </form>
+            </div>
+
+            <span class="task-list-category badge">{{taskList.category}}</span>
+        </header>
 
 
         <form action="{% url 'update_taskList_tasks' %}"
@@ -60,13 +72,7 @@
                    value="add"> -->
         </form>
 
-        <form action="{% url 'delete_taskList' taskList.id %}"
-              method="POST">
-            {% csrf_token %}
-            <input class="task-delete-button"
-                   type="submit"
-                   value="X">
-        </form>
+
     </div>
 
     {% endfor %}
