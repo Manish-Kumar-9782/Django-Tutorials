@@ -2,15 +2,33 @@
     {% for taskList in taskLists %}
     <div class="task-list-card">
 
-        <h1 class="task-list-title">{{taskList.title}}</h1>
-        <span class="task-list-category">{{taskList.category}}</span>
+        <div class="task-list-header">
+            <div class="d-flex jc-between al-center">
+                <span class="task-list-title">{{taskList.title}}</span>
+                <form action="{% url 'delete_tasklist' taskList.id %}"
+                      method="POST">
+                    {% csrf_token %}
+                    <input class="task-list-delete-button"
+                           type="submit"
+                           value="X">
+                </form>
+            </div>
+            <div class="d-flex gap">
+                <span class="task-list-category badge">{{taskList.category}}</span>
+                <span class="badge">{{taskList.status}}</span>
+                <span class="badge">{{taskList.priority}}</span>
+            </div>
+        </div>
 
         <!-- a ul task list, using for loop to display all task of the 
          current task list. -->
         <ul class="task-list">
             {% for task in taskList.tasks.all %}
             <li class="task-list-item">
-                <span>{{task.text}}</span>
+                <div>
+                    <input type="checkbox">
+                    <span>{{task.text}}</span>
+                </div>
                 <div class="list-item-actions">
                     <a href="{% url 'delete_task' task.id %}">
                         <i class="bi bi-x-lg"></i>

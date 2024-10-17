@@ -15,8 +15,27 @@ class Task(models.Model):
 
 
 class TaskList(models.Model):
+
+    class StatusChoices(models.TextChoices):
+        ACTIVE = "active", "Active"
+        PENDING = "pending", "Pending"
+        COMPLETED = "completed", "Completed"
+        INIT = "init", "Init"
+
+    class PriorityChoices(models.TextChoices):
+        LOW = "low", "Low"
+        MEDIUM = "medium", "Medium"
+        HIGH = "high", "High"
+
     title = models.CharField(max_length=50)
     category = models.CharField(max_length=15)
+
+    # adding priority and status with Choice list
+    status = models.CharField(
+        max_length=10, default=StatusChoices.INIT,  choices=StatusChoices.choices)
+
+    priority = models.CharField(
+        max_length=10, default=PriorityChoices.LOW, choices=PriorityChoices.choices)
 
     # now we will add few more fields
     # a field to store time at which taskList created.

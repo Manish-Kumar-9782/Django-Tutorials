@@ -25,6 +25,16 @@ def add_taskList(request):
         return redirect("show_task_lists")
 
 
+def delete_tasklist(request, taskListId):
+
+    if request.method == "POST":
+        taskList = TaskList.objects.get(id=taskListId)
+        taskList.delete()
+        return redirect("show_task_lists")
+
+# ---------------------------------------------------------------------- #
+
+
 # another function to  add a task.
 # to add a new task into existing TaskList
 def add_task(request):

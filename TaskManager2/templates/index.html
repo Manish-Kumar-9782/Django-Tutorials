@@ -69,6 +69,54 @@
     </style>
 
     <style id="tasklist">
+        :root {
+            --color-dark: 0deg;
+            --color-green: 117deg;
+            --color-red: 6deg;
+            --color-skyblue: 177deg;
+            --color-blue: 236deg;
+            --color-pink: 292deg;
+
+
+            --badge-text-saturation: 95%;
+            --badge-text-light: 18%;
+
+            --badge-bg-saturation: 93%;
+            --badge-bg-light: 64%;
+            --badge-bg-alpha: 34%;
+
+
+
+            --badge-bg-color: var(--color-dark);
+            --badge-bg-hsl: hsl(var(--badge-bg-color) var(--badge-bg-saturation) var(--badge-bg-light)/ var(--badge-bg-alpha));
+
+            --badge-text-color: var(--color-dark);
+
+            --badge-text-hsl: hsl(var(--badge-text-color) var(--badge-text-saturation) var(--badge-text-light))
+        }
+
+        .badge {
+            background-color: hsl(var(--badge-bg-color) var(--badge-bg-saturation) var(--badge-bg-light)/ var(--badge-bg-alpha));
+            padding: 2px 6px;
+            border-radius: 6px;
+            display: flex;
+            width: fit-content;
+            color: hsl(var(--badge-text-color) var(--badge-text-saturation) var(--badge-text-light));
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            margin-top: 2px;
+        }
+
+        .badge-blue {
+            --color: var(--color-blue);
+            --badge-bg-color: var(--color);
+            --badge-text-color: var(--color);
+
+
+        }
+
+
         .task-list-container {
             display: flex;
             gap: 1rem;
@@ -86,18 +134,24 @@
             box-sizing: border-box;
         }
 
-        .task-delete-button {
-            position: absolute;
-            top: 0px;
-            left: 100%;
-            translate: -110% 10px;
+        .task-list-title {
+            margin: 0px;
+            font-size: 1.3rem;
+            font-weight: 600;
+
+        }
+
+        .task-list-delete-button {
             background-color: inherit;
             border: 0px;
             padding: 4px;
-            border-radius: 8px;
+            border-radius: 4px;
+            width: 1.3rem;
+            height: 1.3rem;
+            line-height: 0;
         }
 
-        .task-delete-button:hover {
+        .task-list-delete-button:hover {
             background-color: rgb(60, 60, 60);
             color: white;
         }
@@ -136,6 +190,37 @@
         .add-task-input:focus {
             border: 0px;
             outline: 0px;
+        }
+
+        .task-list {
+            padding: 4px;
+            text-align: left;
+        }
+    </style>
+
+    <style>
+        .d-flex {
+            display: flex;
+        }
+
+        .d-inline-block {
+            display: inline-block;
+        }
+
+        .jc-center {
+            justify-content: center;
+        }
+
+        .jc-between {
+            justify-content: space-between;
+        }
+
+        .al-center {
+            align-items: center;
+        }
+
+        .gap {
+            gap: 10px;
         }
     </style>
 
