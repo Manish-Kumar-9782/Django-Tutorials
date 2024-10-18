@@ -15,6 +15,43 @@
     align-items: center;
 }
 
+.gap-1 {
+    gap: 1rem;
+}
+
 .jc-between {
     justify-content: space-between;
+}
+
+.search-input-box {
+    position: relative;
+}
+
+.search-logo {
+    position: absolute;
+    top: 50%;
+    transform: translate(70%, -50%);
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    padding-left: 40px;
+    font-size: 1.1rem;
+    background-color: #eee;
+    border-radius: 4px;
+}
+
+.search-input:focus-visible {
+    outline: 2px solid #d0d0d0;
+}
+
+.user-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    border: 2px solid #d0d0d0;
+    padding: 2px;
 }

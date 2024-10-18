@@ -1,12 +1,40 @@
 {% extends "index.html" %}
+{% load static %}
+
 
 {% block content %}
 
 
-
 <div class="content">
-    {% include "tasks/tasks.html" %}
-</div>
+    <div class="d-flex jc-between al-center ">
 
+        <div class="search-input-box">
+            <i class="bi bi-search search-logo"></i>
+            <input class="search-input"
+                   type="search"
+                   name="task_list"
+                   id="task_list">
+        </div>
+        <div class="d-flex  al-center gap-1">
+
+            <i class="bi bi-bell-fill"></i>
+            <span>
+                Ram Lal Parsad <br>
+                HR Manager
+            </span>
+
+            <img class="user-avatar"
+                 src="{% static 'images/user 1.png' %}"
+                 alt="user avatar">
+
+        </div>
+
+    </div>
+
+    <div class="pt-5">
+        {% include "tasks/tasks.html" %}
+    </div>
+
+</div>
 
 {% endblock content %}
