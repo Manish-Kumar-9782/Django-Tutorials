@@ -5,6 +5,7 @@
 
 .content {
     flex: 8.5;
+    margin-inline: 1.2rem;
 }
 
 .d-flex {
@@ -54,4 +55,32 @@
     object-position: center;
     border: 2px solid #d0d0d0;
     padding: 2px;
+}
+
+
+/* ---------------------- */
+.user-role {
+    font-size: smaller;
+    color: #757575;
+}
+
+.user-info {
+    line-height: 1.1rem;
+}
+
+/* ---------------- task priority */
+
+.priority-low {
+    --badge-text-color: var(--color-green);
+    --badge-bg-color: var(--color-green);
+}
+
+.priority-medium {
+    --badge-text-color: var(--color-orange);
+    --badge-bg-color: var(--color-orange);
+}
+
+.priority-high {
+    --badge-text-color: var(--color-red);
+    --badge-bg-color: var(--color-red);
 }

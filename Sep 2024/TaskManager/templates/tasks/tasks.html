@@ -14,7 +14,12 @@
                 </form>
             </div>
 
-            <span class="task-list-category badge">{{taskList.category}}</span>
+            <div class="d-flex gap-1">
+                <span class="task-list-category badge">{{taskList.category}}</span>
+                <span class="task-list-category badge">{{taskList.status}}</span>
+                <span
+                      class="task-list-category badge priority-{{taskList.priority}}">{{taskList.priority}}</span>
+            </div>
         </header>
 
 
