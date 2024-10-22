@@ -84,3 +84,28 @@
     --badge-text-color: var(--color-red);
     --badge-bg-color: var(--color-red);
 }
+
+
+/* -------------- task status ---------------- */
+
+
+
+.status-completed {
+    --badge-text-color: var(--color-green);
+    --badge-bg-color: var(--color-green);
+}
+
+.status-pending {
+    --badge-text-color: var(--color-pink);
+    --badge-bg-color: var(--color-pink);
+}
+
+.status-active {
+    --badge-text-color: var(--color-blue);
+    --badge-bg-color: var(--color-blue);
+}
+
+.status-init {
+    --badge-text-color: var(--color-yellow);
+    --badge-bg-color: var(--color-yellow);
+}

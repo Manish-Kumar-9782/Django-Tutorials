@@ -2,7 +2,7 @@
     {% for taskList in taskLists %}
     <div class="task-list-card">
 
-        <header>
+        <header class="tasklist-header">
             <div class="d-flex al-center jc-between">
                 <h1 class="task-list-title">{{taskList.title}}</h1>
                 <form action="{% url 'delete_taskList' taskList.id %}"
@@ -16,7 +16,8 @@
 
             <div class="d-flex gap-1">
                 <span class="task-list-category badge">{{taskList.category}}</span>
-                <span class="task-list-category badge">{{taskList.status}}</span>
+                <span
+                      class="task-list-category badge status-{{taskList.status}} ">{{taskList.status}}</span>
                 <span
                       class="task-list-category badge priority-{{taskList.priority}}">{{taskList.priority}}</span>
             </div>
@@ -24,7 +25,8 @@
 
 
         <form action="{% url 'update_taskList_tasks' %}"
-              method="POST">
+              method="POST"
+              id="update-tasklist-form">
             {% csrf_token %}
             <input type="text"
                    name="taskListId"
@@ -55,14 +57,17 @@
                 </li>
                 {% endfor %}
             </ul>
-            <input type="submit"
-                   value="save">
+
+
+
         </form>
 
 
         <!--  -->
 
-        <form action="{% if update.taskListId == taskList.id %}
+        <form id="add-update-task"
+              class="d-flex gap-1"
+              action="{% if update.taskListId == taskList.id %}
         {% url 'update_task' update.task.id %}
         {% else %}
         {% url 'add_task' taskList.id %}
@@ -73,8 +78,12 @@
                    type="text"
                    name="text"
                    value="{% if update.taskListId == taskList.id %}{{update.task.text}}{% endif %}">
-            <!-- <input type="submit"
-                   value="add"> -->
+
+            <button class="update-tasklist-button"
+                    type="submit"
+                    form="update-tasklist-form">
+                <i class="bi bi-floppy2"></i>
+            </button>
         </form>
 
 
