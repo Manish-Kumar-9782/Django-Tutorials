@@ -33,6 +33,11 @@ def add_taskList(request):
 
 def update_taskList_tasks(request):
 
+    print("\n\n")
+    print("update tasklist task method: ", request.method)
+    print("update tasklist task data: ", request.POST, "\n", request.GET)
+    print("\n\n")
+
     if request.method == "POST":
         taskListId = request.POST.get("taskListId")
         taskList = TaskList.objects.get(id=taskListId)

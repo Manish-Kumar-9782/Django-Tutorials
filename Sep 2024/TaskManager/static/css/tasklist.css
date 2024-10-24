@@ -24,7 +24,21 @@
 
     --badge-text-color: var(--color-dark);
 
-    --badge-text-hsl: hsl(var(--badge-text-color) var(--badge-text-saturation) var(--badge-text-light))
+    --badge-text-hsl: hsl(var(--badge-text-color) var(--badge-text-saturation) var(--badge-text-light));
+
+
+    /* card background variables */
+    --card-bg-hue: 228deg;
+    --card-bg-saturation: 90%;
+    --card-bg-light: 40%;
+    --card-bg-alpha: 30%;
+
+    /* card text variables */
+    --card-text-hue: 228deg;
+    --card-text-saturation: 50%;
+    --card-text-light: 30%;
+    --card-text-alpha: 100%;
+
 }
 
 
@@ -108,10 +122,9 @@
 }
 
 .update-tasklist-button {
-    color: gray;
+    color: inherit;
     font-size: 1rem;
 }
-
 
 .update-tasklist-button {
     visibility: hidden;
@@ -155,9 +168,6 @@ input.task-list-item-checkbox:checked+.task-list-item-title {
     text-decoration: line-through;
 }
 
-
-
-
 .badge {
     --badge-bg-color: var(--color-pblue);
     --badge-text-color: var(--color-pblue);
@@ -175,6 +185,22 @@ input.task-list-item-checkbox:checked+.task-list-item-title {
     font-weight: 600;
     text-transform: capitalize;
 }
+
+
+.card-theme {
+    --color: var(--color-blue);
+    --card-bg-hue: var(--color);
+    --card-text-hue: var(--color);
+
+    background-color: hsl(var(--card-bg-hue) var(--card-bg-saturation) var(--card-bg-light)/ var(--card-bg-alpha));
+    color: hsl(var(--card-text-hue) var(--card-text-saturation) var(--card-text-light)/ var(--card-text-alpha));
+
+}
+
+.card-theme i.bi {
+    color: hsl(var(--card-text-hue) var(--card-text-saturation) var(--card-text-light)/ var(--card-text-alpha));
+}
+
 
 .badge-red {
     --badge-text-color: var(--color-red);

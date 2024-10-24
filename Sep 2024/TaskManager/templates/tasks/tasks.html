@@ -1,6 +1,6 @@
 <div class="task-list-container">
     {% for taskList in taskLists %}
-    <div class="task-list-card">
+    <div class="task-list-card card-theme">
 
         <header class="tasklist-header">
             <div class="d-flex al-center jc-between">
@@ -26,7 +26,7 @@
 
         <form action="{% url 'update_taskList_tasks' %}"
               method="POST"
-              id="update-tasklist-form">
+              id="update-tasklist-form-{{taskList.id}}">
             {% csrf_token %}
             <input type="text"
                    name="taskListId"
@@ -81,7 +81,7 @@
 
             <button class="update-tasklist-button"
                     type="submit"
-                    form="update-tasklist-form">
+                    form="update-tasklist-form-{{taskList.id}}">
                 <i class="bi bi-floppy2"></i>
             </button>
         </form>
