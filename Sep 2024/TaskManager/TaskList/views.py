@@ -7,11 +7,11 @@ def task_list(request):
 
     if request.method == "GET":
         taskLists = TaskList.objects.all()
+        color_range = range(1, 360, 3)
+        # for task_list in taskLists:
+        #     print(task_list.tasks.all())
 
-        for task_list in taskLists:
-            print(task_list.tasks.all())
-
-        return render(request, 'home.html', {"taskLists": taskLists})
+        return render(request, 'home.html', {"taskLists": taskLists, "color_range": color_range})
 
 
 def add_taskList(request):

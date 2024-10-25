@@ -107,7 +107,7 @@
 
 
 .task-delete-button:hover {
-    background-color: rgb(60, 60, 60);
+    /* background-color: rgb(60, 60, 60); */
     color: white;
 }
 
@@ -117,7 +117,6 @@
     padding: 4px;
     width: 100%;
     border: 0px;
-    border-bottom: 1px solid rgb(93, 93, 93);
     box-shadow: inset 1px 1px 0px -1px lightgray;
 }
 
@@ -152,7 +151,6 @@
 }
 
 .task-list-item:hover {
-    background-color: rgb(225, 225, 225);
     cursor: pointer;
 }
 
@@ -167,6 +165,20 @@
 input.task-list-item-checkbox:checked+.task-list-item-title {
     text-decoration: line-through;
 }
+
+.task-actions-body {
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    justify-content: space-between;
+}
+
+.task-actions-body:first-child {
+    flex: 1;
+}
+
+
+/* --------------- */
 
 .badge {
     --badge-bg-color: var(--color-pblue);
@@ -186,6 +198,12 @@ input.task-list-item-checkbox:checked+.task-list-item-title {
     text-transform: capitalize;
 }
 
+.badge-red {
+    --badge-text-color: var(--color-red);
+    --badge-bg-color: var(--color-red);
+}
+
+/* card theme configuration  */
 
 .card-theme {
     --color: var(--color-blue);
@@ -202,7 +220,22 @@ input.task-list-item-checkbox:checked+.task-list-item-title {
 }
 
 
-.badge-red {
-    --badge-text-color: var(--color-red);
-    --badge-bg-color: var(--color-red);
+.card-theme input[type=checkbox] {
+    accent-color: currentColor;
+}
+
+.card-theme button {
+    --card-bg-alpha: 10%;
+    background-color: hsl(var(--card-bg-hue) var(--card-bg-saturation) var(--card-bg-light)/ var(--card-bg-alpha));
+}
+
+
+.card-theme input.add-task-input {
+    --card-bg-alpha: 9%;
+    background-color: hsl(var(--card-bg-hue) var(--card-bg-saturation) var(--card-bg-light)/ var(--card-bg-alpha));
+}
+
+.card-theme .task-list-item:hover {
+    --card-bg-alpha: 9%;
+    background-color: hsl(var(--card-bg-hue) var(--card-bg-saturation) var(--card-bg-light)/ var(--card-bg-alpha));
 }

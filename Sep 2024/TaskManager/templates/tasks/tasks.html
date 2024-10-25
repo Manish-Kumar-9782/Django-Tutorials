@@ -1,6 +1,7 @@
 <div class="task-list-container">
     {% for taskList in taskLists %}
-    <div class="task-list-card card-theme">
+    <div class="task-list-card card-theme"
+         style="--color:{{color_range|random}}">
 
         <header class="tasklist-header">
             <div class="d-flex al-center jc-between">
@@ -8,9 +9,12 @@
                 <form action="{% url 'delete_taskList' taskList.id %}"
                       method="POST">
                     {% csrf_token %}
-                    <input class="task-delete-button"
+                    <!-- <input class="task-delete-button"
                            type="submit"
-                           value="X">
+                           value="X"> -->
+
+                    <button type="submit"
+                            class="task-delete-button">X</button>
                 </form>
             </div>
 
@@ -24,68 +28,70 @@
         </header>
 
 
-        <form action="{% url 'update_taskList_tasks' %}"
-              method="POST"
-              id="update-tasklist-form-{{taskList.id}}">
-            {% csrf_token %}
-            <input type="text"
-                   name="taskListId"
-                   value="{{taskList.id}}"
-                   hidden>
-            <ul class="task-list">
-                {% for task in taskList.tasks.all %}
-                <li class="task-list-item">
+        <div class="task-actions-body">
+            <!-- a form to update task list items -->
+            <form action="{% url 'update_taskList_tasks' %}"
+                  method="POST"
+                  id="update-tasklist-form-{{taskList.id}}">
+                {% csrf_token %}
+                <input type="text"
+                       name="taskListId"
+                       value="{{taskList.id}}"
+                       hidden>
+                <ul class="task-list">
+                    {% for task in taskList.tasks.all %}
+                    <li class="task-list-item">
 
-                    <div>
-                        <input class="task-list-item-checkbox"
-                               type="checkbox"
-                               name="task-{{task.id}}"
-                               id="task-{{task.id}}"
-                               {% if task.isCompleted %}
-                               checked
-                               {% endif %}>
+                        <div>
+                            <input class="task-list-item-checkbox"
+                                   type="checkbox"
+                                   name="task-{{task.id}}"
+                                   id="task-{{task.id}}"
+                                   {% if task.isCompleted %}
+                                   checked
+                                   {% endif %}>
 
-                        <span class="task-list-item-title">
-                            {{task}}
-                        </span>
-                    </div>
+                            <span class="task-list-item-title">
+                                {{task}}
+                            </span>
+                        </div>
 
-                    <div class="list-item-actions">
-                        <a href="{% url 'update_task' task.id %}"> <i class="bi bi-pencil"></i></a>
-                        <a href="{% url 'delete_task' task.id %}"><i class="bi bi-x-lg"></i></a>
-                    </div>
-                </li>
-                {% endfor %}
-            </ul>
-
-
-
-        </form>
+                        <div class="list-item-actions">
+                            <a href="{% url 'update_task' task.id %}"> <i
+                                   class="bi bi-pencil"></i></a>
+                            <a href="{% url 'delete_task' task.id %}"><i class="bi bi-x-lg"></i></a>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
 
 
-        <!--  -->
 
-        <form id="add-update-task"
-              class="d-flex gap-1"
-              action="{% if update.taskListId == taskList.id %}
-        {% url 'update_task' update.task.id %}
-        {% else %}
-        {% url 'add_task' taskList.id %}
-        {% endif %}"
-              method="POST">
-            {% csrf_token %}
-            <input class="add-task-input"
-                   type="text"
-                   name="text"
-                   value="{% if update.taskListId == taskList.id %}{{update.task.text}}{% endif %}">
+            </form>
 
-            <button class="update-tasklist-button"
-                    type="submit"
-                    form="update-tasklist-form-{{taskList.id}}">
-                <i class="bi bi-floppy2"></i>
-            </button>
-        </form>
+            <!-- a form to update a task into the current task list -->
+            <form id="add-update-task"
+                  class="d-flex gap-1"
+                  action="{% if update.taskListId == taskList.id %}
+  {% url 'update_task' update.task.id %}
+  {% else %}
+  {% url 'add_task' taskList.id %}
+  {% endif %}"
+                  method="POST">
+                {% csrf_token %}
+                <input class="add-task-input"
+                       type="text"
+                       name="text"
+                       value="{% if update.taskListId == taskList.id %}{{update.task.text}}{% endif %}">
 
+                <button class="update-tasklist-button"
+                        type="submit"
+                        form="update-tasklist-form-{{taskList.id}}">
+                    <i class="bi bi-floppy2"></i>
+                </button>
+            </form>
+
+        </div>
 
     </div>
 
