@@ -1,6 +1,13 @@
 from django.urls import path
 from .views import task_list, add_taskList, add_task, delete_taskList, update_taskList_tasks, delete_task, update_task
 
+from .api_views import get_task_lists
+
+
+urlpatterns_apis = [
+    path("get_task_lists", view=get_task_lists)
+]
+
 
 urlpatterns = [
     path("", view=task_list, name='view_tasks'),
@@ -14,4 +21,4 @@ urlpatterns = [
     path("delete_task/<int:taskId>", view=delete_task, name="delete_task"),
     path("update_task/<int:taskId>", view=update_task, name="update_task"),
 
-]
+] + urlpatterns_apis
