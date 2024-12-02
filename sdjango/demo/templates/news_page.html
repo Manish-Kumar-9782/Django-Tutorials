@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .news-container {
+            width: 400px;
+            border: 1px solid darkblue;
+            padding: 20px;
+            font-size: 18px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: #a99cbe;
+
+        }
+
+        .news-image {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="news-container">
+        <h1>{{news.title}}</h1>
+
+        <img class="news-image"
+             src="{% static 'image1.jpg'%}"
+             alt="aloe vera">
+
+        {% for para in news.paras %}
+        <p>{{para}}</p>
+        {% endfor%}
+    </div>
+
+</body>
+
+</html>
