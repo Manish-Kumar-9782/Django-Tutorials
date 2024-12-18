@@ -1,11 +1,12 @@
 from django.urls import path
 from .views import task_list, add_taskList, add_task, delete_taskList, update_taskList_tasks, delete_task, update_task
 
-from .api_views import get_task_lists
+from .api_views import get_task_lists, api_add_task
 
 
 urlpatterns_apis = [
-    path("get_task_lists", view=get_task_lists)
+    path("api/get_task_lists", view=get_task_lists),
+    path("api/add_task", view=api_add_task)
 ]
 
 

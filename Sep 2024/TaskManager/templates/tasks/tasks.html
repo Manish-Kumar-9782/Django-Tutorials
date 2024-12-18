@@ -15,7 +15,7 @@
 
                     <button type="submit"
                             class="task-delete-button">X</button>
-                            
+
                 </form>
             </div>
 
@@ -39,7 +39,8 @@
                        name="taskListId"
                        value="{{taskList.id}}"
                        hidden>
-                <ul class="task-list">
+                <ul id="task-list-{{taskList.id}}"
+                    class="task-list">
                     {% for task in taskList.tasks.all %}
                     <li class="task-list-item">
 
@@ -80,7 +81,8 @@
   {% endif %}"
                   method="POST">
                 {% csrf_token %}
-                <input class="add-task-input"
+                <input id="{{taskList.id}}"
+                       class="add-task-input"
                        type="text"
                        name="text"
                        value="{% if update.taskListId == taskList.id %}{{update.task.text}}{% endif %}">
@@ -97,4 +99,74 @@
     </div>
 
     {% endfor %}
+
+    <script>
+
+        const inputs = document.getElementsByClassName("add-task-input")
+
+        function onInputEnter(e) {
+
+            if (e.key == "Enter") {
+                e.preventDefault()
+                const data = {
+                    text: this.value,
+                    taskList: this.id
+                };
+                console.log(data)
+                fetchData(data)
+            }
+        }
+
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].onkeypress = onInputEnter
+        }
+
+
+        function on_result_add_task(result) {
+
+            if (result) {
+                data = result.data
+                console.log(data)
+                const ul = document.getElementById(`task-list-${data.taskListId}`)
+                const li = document.createElement('li')
+                li.textContent = data.text
+                ul.appendChild(li)
+
+            }
+
+        }
+
+
+        // Async function define karna
+        async function fetchData(data) {
+            const csrftoken = document.getElementsByName("csrfmiddlewaretoken")[0].value
+
+            try {
+                // Fetch request bhejna
+                const response = await fetch('api/add_task', {
+                    method: 'POST', // HTTP method
+                    headers: {
+                        'Content-Type': 'application/json', // Data ka type
+                        'X-CSRFToken': csrftoken // CSRF token
+                    },
+                    body: JSON.stringify(data) // Data ko JSON format mein convert karna
+                });
+
+                // Response ko check karna
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const result = await response.json(); // Response ko JSON format mein convert karna
+                console.log('Success:', result); // Success message
+
+                on_result_add_task(result);
+
+
+            } catch (error) {
+                console.error('Error:', error); // Error handling
+            }
+        }
+
+    </script>
 </div>
