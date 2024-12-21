@@ -1,3 +1,5 @@
+{% load static %}
+
 <div class="task-list-container">
     {% for taskList in taskLists %}
     <div class="task-list-card card-theme"
@@ -42,7 +44,8 @@
                 <ul id="task-list-{{taskList.id}}"
                     class="task-list">
                     {% for task in taskList.tasks.all %}
-                    <li class="task-list-item">
+                    <li data-id="{{task.id}}"
+                        class="task-list-item">
 
                         <div>
                             <input class="task-list-item-checkbox"
@@ -62,6 +65,8 @@
                             <a href="{% url 'update_task' task.id %}"> <i
                                    class="bi bi-pencil"></i></a>
                             <a href="{% url 'delete_task' task.id %}"><i class="bi bi-x-lg"></i></a>
+                            <button class="delete-task-item"
+                                    data-id="{{task.id}}"><i class="bi bi-x-lg"></i></button>
                         </div>
                     </li>
                     {% endfor %}
@@ -100,27 +105,98 @@
 
     {% endfor %}
 
-    <script>
+    <script src="{% static 'js/tasks.js' %}"></script>
 
+    <script>
+        const createListItem = (text, taskId) => {
+
+            return `<li class="task-list-item">
+
+                        <div>
+                            <input class="task-list-item-checkbox"
+                                   type="checkbox"
+                                   name="task-${taskId}"
+                                   id="task-${taskId}"
+
+                            <span class="task-list-item-title">
+                               ${text}
+                            </span>
+                        </div>
+
+                        <div class="list-item-actions">
+                            <a href="update_task/${taskId}"> <i
+                                   class="bi bi-pencil"></i></a>
+                            <a href="delete_task/${taskId}"><i class="bi bi-x-lg"></i></a>
+                        </div>
+                    </li>`
+        }
+    </script>
+
+    <!-- on delete button click -->
+    <script>
+        const deleteTaskButtons = document.querySelectorAll(".delete-task-item")
+
+        function onClickDelete(e) {
+            e.preventDefault();
+            const data = {
+                "taskId": this.dataset.id
+            }
+            console.log(data)
+            requestDeleteTask(data)
+        }
+
+        deleteTaskButtons.forEach(btn => btn.onclick = onClickDelete)
+    </script>
+
+
+    <!-- on add task Input Enter  -->
+    <script>
         const inputs = document.getElementsByClassName("add-task-input")
 
         function onInputEnter(e) {
 
+
             if (e.key == "Enter") {
-                e.preventDefault()
+                e.preventDefault()  // preventing form from submitting.
                 const data = {
                     text: this.value,
                     taskList: this.id
                 };
                 console.log(data)
-                fetchData(data)
+                requestAddTask(data)
+                this.value = ''
             }
         }
 
         for (let i = 0; i < inputs.length; i++) {
             inputs[i].onkeypress = onInputEnter
         }
+    </script>
 
+
+    <!-- on check Item -->
+    <script>
+        const checkItems = document.querySelectorAll(".task-list-item-checkbox")
+
+        function onCheckItem(e) {
+
+            const data = {
+                "update": {
+                    "isCompleted": this.checked
+                },
+                "taskId": this.id.replace("task-", "")
+            }
+
+            // sending update request...
+            requestUpdateTask(data)
+        }
+
+
+        checkItems.forEach(_input => _input.onchange = onCheckItem)
+
+    </script>
+
+    <script>
 
         function on_result_add_task(result) {
 
@@ -128,21 +204,44 @@
                 data = result.data
                 console.log(data)
                 const ul = document.getElementById(`task-list-${data.taskListId}`)
-                const li = document.createElement('li')
-                li.textContent = data.text
-                ul.appendChild(li)
+
+                ul.innerHTML += createListItem(data.text, data.taskId)
 
             }
 
         }
 
+        function on_result_delete_task(result) {
 
-        // Async function define karna
-        async function fetchData(data) {
+            if (result) {
+
+                if (result.status = "success") {
+                    const li_selector_string = `li[data-id='${result.data.taskId}']`
+                    document.querySelector(li_selector_string).remove()
+                }
+
+
+            }
+        }
+
+
+        function on_result_update_task(result) {
+
+            if (result) {
+                if (result.status == "success") {
+                    const taskId = result.data.taskId;
+                    const taskCheckBox = document.getElementById(`task-${taskId}`)
+                    taskCheckBox.checked = result.data.update.isCompleted;
+                }
+            }
+        }
+
+        // Async function to add an item
+        async function requestAddTask(data) {
             const csrftoken = document.getElementsByName("csrfmiddlewaretoken")[0].value
 
             try {
-                // Fetch request bhejna
+                // Fetch request bhejna http://127.0.0.1:8000/tasks/api/add_task
                 const response = await fetch('api/add_task', {
                     method: 'POST', // HTTP method
                     headers: {
@@ -160,6 +259,7 @@
                 const result = await response.json(); // Response ko JSON format mein convert karna
                 console.log('Success:', result); // Success message
 
+                // if we have result and its data then process the add_task
                 on_result_add_task(result);
 
 
@@ -167,6 +267,75 @@
                 console.error('Error:', error); // Error handling
             }
         }
+
+
+        // Async function to delete an item
+        async function requestDeleteTask(data) {
+            const csrftoken = getCsrfToken()
+
+            try {
+                // Fetch request bhejna http://127.0.0.1:8000/tasks/api/delete_task
+                const response = await fetch('api/delete_task', {
+                    method: 'POST', // HTTP method
+                    headers: {
+                        'Content-Type': 'application/json', // Data ka type
+                        'X-CSRFToken': csrftoken // CSRF token
+                    },
+                    body: JSON.stringify(data) // Data ko JSON format mein convert karna
+                });
+
+                // Response ko check karna
+                if (!response.ok) {
+                    throw new Error(`Sever Error: Unable to Delete the task.. `);
+                }
+
+                const result = await response.json(); // Response ko JSON format mein convert karna
+                console.log('Success:', result); // Success message
+
+                // if we have result and its data then process the add_task
+                on_result_delete_task(result);
+
+
+            } catch (error) {
+                console.error('Error:', error); // Error handling
+            }
+        }
+
+
+        // Async function to checkItem
+        async function requestUpdateTask(data) {
+            const csrftoken = getCsrfToken()
+
+            try {
+                // Fetch request bhejna http://127.0.0.1:8000/tasks/api/delete_task
+                const response = await fetch('api/update_task', {
+                    method: 'POST', // HTTP method
+                    headers: {
+                        'Content-Type': 'application/json', // Data ka type
+                        'X-CSRFToken': csrftoken // CSRF token
+                    },
+                    body: JSON.stringify(data) // Data ko JSON format mein convert karna
+                });
+
+                // Response ko check karna
+                if (!response.ok) {
+                    throw new Error(`Sever Error: Unable to Delete the task.. `);
+                }
+
+                const result = await response.json(); // Response ko JSON format mein convert karna
+                console.log('Success:', result); // Success message
+
+                // if we have result and its data then process the add_task
+                on_result_update_task(result);
+
+
+            } catch (error) {
+                console.error('Error:', error); // Error handling
+            }
+        }
+
+
+
 
     </script>
 </div>
