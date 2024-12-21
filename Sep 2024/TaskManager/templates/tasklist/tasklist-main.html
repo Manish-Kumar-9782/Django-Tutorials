@@ -1,0 +1,22 @@
+{% load static %}
+
+<div class="task-list-container">
+    {% for taskList in taskLists  %}
+    <div class="task-list-card card-theme"
+         data-id="{{taskList.id}}"
+         style="--color:{{color_range|random}}">
+        {% include 'tasklist/tasklist-header.html' %}
+        {% include 'tasklist/tasklist-body.html' %}
+    </div>
+    {% endfor %}
+
+    <script>
+        const TASKLISTS = new TaskLists()
+
+        document.querySelectorAll('.task-list-card').forEach((tasklist) => {
+            TASKLISTS.add(tasklist)
+        })
+
+        console.log(TASKLISTS)
+    </script>
+</div>

@@ -1,0 +1,20 @@
+<form id="add-update-task"
+      class="d-flex gap-1"
+      action="{% if update.taskListId == taskList.id %}
+        {% url 'update_task' update.task.id %}
+        {% else %}
+        {% url 'add_task' taskList.id %}
+      {% endif %}"
+      method="POST">
+    {% csrf_token %}
+    <input id="{{taskList.id}}"
+           class="add-task-input"
+           type="text"
+           name="text"
+           value="{% if update.taskListId == taskList.id %}{{update.task.text}}{% endif %}">
+    <button class="update-tasklist-button"
+            type="submit"
+            form="update-tasklist-form-{{taskList.id}}">
+        <i class="bi bi-floppy2"></i>
+    </button>
+</form>

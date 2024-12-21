@@ -1,0 +1,9 @@
+<form action="{% url 'update_taskList_tasks' %}"
+      method="POST"
+      id="update-tasklist-form-{{taskList.id}}">
+    {% csrf_token %}
+    <input type="text"
+           name="taskListId"
+           value="{{taskList.id}}"
+           hidden>
+</form>

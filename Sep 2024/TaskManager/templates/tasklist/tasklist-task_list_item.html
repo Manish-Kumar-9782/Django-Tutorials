@@ -1,0 +1,21 @@
+<li data-id="{{task.id}}"
+    class="task-list-item">
+    <div>
+        <input class="task-list-item-checkbox"
+               type="checkbox"
+               name="task-{{task.id}}"
+               id="task-{{task.id}}"
+               {% if task.isCompleted %}
+               checked
+               {% endif %}>
+        <span class="task-list-item-text">
+            {{task}}
+        </span>
+    </div>
+    <div class="list-item-actions">
+        <a href="{% url 'update_task' task.id %}"> <i class="bi bi-pencil"></i></a>
+        <a href="{% url 'delete_task' task.id %}"><i class="bi bi-x-lg"></i></a>
+        <button class="delete-task-item"
+                data-id="{{task.id}}"><i class="bi bi-x-lg"></i></button>
+    </div>
+</li>

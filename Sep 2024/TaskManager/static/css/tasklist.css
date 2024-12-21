@@ -162,14 +162,14 @@
     visibility: visible;
 }
 
-input.task-list-item-checkbox:checked+.task-list-item-title {
+input.task-list-item-checkbox:checked+.task-list-item-text {
     text-decoration: line-through;
 }
 
 .task-actions-body {
     display: flex;
     flex-direction: column;
-    height: 70%;
+    /* height: 70%; */
     justify-content: space-between;
 }
 

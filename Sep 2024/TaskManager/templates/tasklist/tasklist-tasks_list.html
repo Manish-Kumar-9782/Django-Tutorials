@@ -1,0 +1,6 @@
+<ul id="task-list-{{taskList.id}}"
+    class="task-list">
+    {% for task in taskList.tasks.all %}
+    {% include "tasklist/tasklist-task_list_item.html" %}
+    {% endfor %}
+</ul>

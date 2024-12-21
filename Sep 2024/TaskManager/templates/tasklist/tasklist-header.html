@@ -1,0 +1,18 @@
+<header class="tasklist-header">
+    <div class="d-flex al-center jc-between">
+        <h1 class="task-list-title">{{taskList.title}}</h1>
+        <form action="{% url 'delete_taskList' taskList.id %}"
+              method="POST">
+            {% csrf_token %}
+            <button type="submit"
+                    class="task-delete-button">X</button>
+        </form>
+    </div>
+    <div class="d-flex gap-1">
+        <span class="task-list-category badge">{{taskList.category}}</span>
+        <span
+              class="task-list-category badge status-{{taskList.status}} ">{{taskList.status}}</span>
+        <span
+              class="task-list-category badge priority-{{taskList.priority}}">{{taskList.priority}}</span>
+    </div>
+</header>
