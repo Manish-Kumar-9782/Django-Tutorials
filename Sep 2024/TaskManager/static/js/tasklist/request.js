@@ -15,7 +15,7 @@ async function fetchRequest(url, data, resFunc) {
 
         // Response ko check karna
         if (!response.ok) {
-            throw new Error(`Sever Error: Unable to Delete the task.. `);
+            throw new Error(`Sever Error: Unable to process the request action.. `);
         }
 
         // res : Response

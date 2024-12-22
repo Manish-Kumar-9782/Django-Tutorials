@@ -33,14 +33,32 @@ function Task(task_element) {
         onCheckItem(this, fetchStatusRequest)
     };
 
+    this.assignEvent = function (eventNames, eventFunc) {
 
-    // this.taskText.onkeypress = onInputEnter;
+        switch (eventNames) {
+            case "delete":
+                this.deleteButton.onclick = eventFunc;
+                break;
+            case "update":
+                this.statusCheckBox.onchange = eventFunc;
+                break;
+            case "edit":
+                this.taskText.onclick = eventFunc;
+                break;
+        }
 
+    }
 
+    // setter and getter methods
 
-    this.setText = (text) => {
+    this.setText = function (text) {
         this.taskText.innerText = text;// updating the text of the task
     }
+
+    this.getText = function () {
+        return this.taskText.innerText;
+    }
+
     this.setId = (id) => {
         this.id = id;
         this.task.dataset.id = id

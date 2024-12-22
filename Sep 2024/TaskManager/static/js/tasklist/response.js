@@ -29,9 +29,15 @@ function on_response_update_task(res, selfTask) {
 
     if (res) {
         if (res.status == "success") {
-            const taskId = res.data.taskId;
-            // const taskCheckBox = document.getElementById(`task-${taskId}`)
-            selfTask.statusCheckBox.checked = res.data.update.isCompleted;
+
+            if (res.data.update.text) {
+                selfTask.setText(res.data.update.text);
+            }
+
+            if (res.data.update.isCompleted) {
+                selfTask.statusCheckBox.checked = res.data.update.isCompleted;
+            }
+
         }
     }
 }

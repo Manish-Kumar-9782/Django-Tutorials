@@ -4,6 +4,12 @@ function getCsrfToken() {
 }
 
 
+const get_edit_input_template = () => {
+    return `
+    <input class="edit-task-input" type="text" name="edit-task" id="edit-task">
+    `
+}
+
 
 const get_list_item_template = (text, taskId) => {
     return `<li class="task-list-item">
@@ -31,6 +37,12 @@ const get_list_item_template = (text, taskId) => {
 const createListItem = (text, taskId) => {
     const el = document.createElement('div');
     el.innerHTML = get_list_item_template(text, taskId);
+    return el.firstElementChild;
+}
+
+const createEditInput = () => {
+    const el = document.createElement('div');
+    el.innerHTML = get_edit_input_template();
     return el.firstElementChild;
 }
 

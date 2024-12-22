@@ -11,8 +11,8 @@ function onClickDelete(selfTask, reqFunc) {
 }
 
 
-
-function onInputEnter(selfTaskList, reqFunc) {
+// an event handler function to add task to the task list.
+function onAddTaskInputEnter(selfTaskList, reqFunc) {
 
     const data = {
         text: selfTaskList.textInput.value,
@@ -25,7 +25,8 @@ function onInputEnter(selfTaskList, reqFunc) {
 }
 
 
-
+// an event handler function to update the task status
+// status: isCompleted
 function onCheckItem(selfTask, reqFunc) {
 
     const data = {
@@ -40,6 +41,18 @@ function onCheckItem(selfTask, reqFunc) {
 }
 
 
+
+function onEditTaskInputEnter(selfTask, reqFunc) {
+    const data = {
+        "update": {
+            "text": selfTask.getText()
+        },
+        "taskId": selfTask.id
+    }
+
+    // sending request
+    reqFunc(data)
+}
 // ----------------- Task List elements event handler functions ----------------- //
 
 

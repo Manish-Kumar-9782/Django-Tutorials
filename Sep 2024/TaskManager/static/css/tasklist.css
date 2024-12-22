@@ -111,6 +111,15 @@
     color: white;
 }
 
+.edit-task-input {
+    width: 250px;
+    border: 0px;
+    outline: none;
+    background-color: inherit;
+    color: inherit;
+    padding: 4px 3px;
+}
+
 .add-task-input {
     flex: 1;
     box-sizing: border-box;
@@ -230,7 +239,8 @@ input.task-list-item-checkbox:checked+.task-list-item-text {
 }
 
 
-.card-theme input.add-task-input {
+.card-theme input.add-task-input,
+.card-theme input.edit-task-input {
     --card-bg-alpha: 9%;
     background-color: hsl(var(--card-bg-hue) var(--card-bg-saturation) var(--card-bg-light)/ var(--card-bg-alpha));
 }
