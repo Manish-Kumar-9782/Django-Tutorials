@@ -6,11 +6,17 @@ function TaskList(tasklist_element) {
     this.id = tasklist_element.dataset.id;
     this.list = this.tasklist.querySelector("ul.task-list");
     this.textInput = this.tasklist.querySelector("input.add-task-input");
+    this.isEnterPressed = false;
     this.tasks = {};
 
     this.onResponseAddTask = (res) => { on_response_add_task(res, this) };
     this.onResponseUpdateTask = null
 
+    this.loadTasks();  // on TaskList Creation load all Tasks
+    this.assignTaskEvents(); // on TaskList Creation assign all Task Events
+
+
+    // # ------------------------------------------ # //
     this.textInput.onkeypress = (e) => {
         if (e.key === "Enter") {
             e.preventDefault(); // preventing form from submitting.
@@ -21,46 +27,8 @@ function TaskList(tasklist_element) {
         }
     }
 
-    // a function to load all tasks in the tasklist
-    this.addTask = function (task, data = {}) {
-        const task_id = task.dataset.id;
-        const newTask = new Task(task);
-        this.tasks[task_id] = newTask;
-
-        if (data.text) {
-            newTask.setText(data.text);
-        }
-
-        if (data.isCompleted) {
-            newTask.statusCheckBox.checked = data.isCompleted;
-        }
-
-        if (data.taskId) {
-            newTask.setId(data.taskId);
-        }
-    }
-
-
-    this.loadTasks = function () {
-        this.tasklist.querySelectorAll("li.task-list-item").forEach(
-            (task) => { this.addTask(task) }
-        )
-    }
-
-
-    // a function to assign events to all tasks in the tasklist
-    // these are only events which can be assigned to the task directory
-    // for other events we need to assign them to the task object directly
-    this.assignTaskEvents = function () {
-        for (let task_id in this.tasks) {
-            const task = this.tasks[task_id];
-            task.assignEvent("edit", (e) => { this.replaceWithInput(task_id) });
-        }
-    }
-
 
     // # ------------------------------------------ # //
-    this.isEnterPressed = false;
     TaskList.task_edit_input.onkeypress = (e) => {
 
         if (e.key === "Enter") {
@@ -98,9 +66,9 @@ function TaskList(tasklist_element) {
         this.isEnterPressed = false;
     }
 
-    this.loadTasks();  // on TaskList Creation load all Tasks
-    this.assignTaskEvents(); // on TaskList Creation assign all Task Events
+    // # ------------------------------------------ # //
 }
+// -x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x- //
 
 
 // ================ TaskList static properties ================ //
@@ -156,31 +124,54 @@ TaskList.prototype.getActiveEditTask = function () {
 
 // ---------------- TaskList class prototype getter and setter ---------------- //
 
-// a method to replace the text of a task with an input element
+// Adding methods to TaskList prototype
+TaskList.prototype.addTask = function (task, data = {}) {
+    const task_id = task.dataset.id;
+    const newTask = new Task(task);
+    this.tasks[task_id] = newTask;
+
+    if (data.text) {
+        newTask.setText(data.text);
+    }
+
+    if (data.isCompleted) {
+        newTask.statusCheckBox.checked = data.isCompleted;
+    }
+
+    if (data.taskId) {
+        newTask.setId(data.taskId);
+    }
+}
+
+TaskList.prototype.loadTasks = function () {
+    this.tasklist.querySelectorAll("li.task-list-item").forEach(
+        (task) => { this.addTask(task) }
+    );
+}
+
+TaskList.prototype.assignTaskEvents = function () {
+    for (let task_id in this.tasks) {
+        const task = this.tasks[task_id];
+        task.assignEvent("edit", (e) => { this.replaceWithInput(task_id) });
+    }
+}
+
 TaskList.prototype.replaceWithInput = function (task_id) {
     const task = this.getTask(task_id);
     const input = this.getEditInput();
-    // first we need assign the text of the task to the input element
     this.setInputValue(task.taskText.innerText);
     task.taskText.replaceWith(input);
-    this.setActiveEditTask(task_id); // setting the active edit task
-    input.focus(); // focusing on the input element
+    this.setActiveEditTask(task_id);
+    input.focus();
 }
 
-
-// a method to replace the input element with the text of the task
 TaskList.prototype.replaceWithText = function (task_id) {
     const task = this.getTask(task_id);
     const input = this.getEditInput();
-    // first we need assign the text of the to the task from input_element.
     const task_text = this.getInputValue();
     task.setText(task_text);
     input.replaceWith(task.taskText);
-    this.setActiveEditTask(null) // resetting the active edit task
+    this.setActiveEditTask(null);
 }
-
-
-
-
 
 // =============== TaskList prototype methods =============== //
